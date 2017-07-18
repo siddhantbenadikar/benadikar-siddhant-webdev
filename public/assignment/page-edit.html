@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="snb">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3 visible-md visible-lg">
+                    <div class="navbar-text navbar-text-no-left-margin pull-left">
+                        <a href="page-list.html">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Pages</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <div class="navbar-text pull-right navbar-text-no-right-margin">
+                        <a href="page-list.html">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                    </div>
+                    <div class="visible-sm visible-xs navbar-text navbar-text-no-left-margin pull-left">
+                        <a href="page-list.html">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Edit Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-md visible-lg snb-split-view-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="row">
+                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-2">
+                                <a href="page-new.html">
+                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="widget-list.html">
+                                    Blogs
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="widget-list.html">
+                                    Home
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="widget-list.html">
+                                    About
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="widget-list.html">
+                                    Contact Us
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="page-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-9 snb-split-view-right">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input name="name"
+                               class="form-control"
+                               value="Home"
+                               id="name" />
+
+                        <label for="title">Title</label>
+                        <input name="title"
+                               class="form-control"
+                               placeholder="Page title"
+                               id="title" />
+
+                        <a class="btn btn-default btn-block btn-success"
+                           href="page-list.html"
+                           role="button">Confirm edit</a>
+
+                        <a class="btn btn-default btn-block btn-danger"
+                           href="page-list.html"
+                           role="button">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="profile.html" class="glyphicon glyphicon-user"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

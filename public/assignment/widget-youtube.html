@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Website</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="snb">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right navbar-text-no-right-margin">
+                <a href="widget-list.html">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-text navbar-text-no-left-margin pull-left">
+                <a href="widget-list.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Widget Edit</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <form method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input name="Name"
+                       class="form-control"
+                       id="name" />
+
+                <label for="text">Text</label>
+                <input name="text"
+                       class="form-control"
+                       id="text" />
+
+                <label for="url">URL</label>
+                <input name="url"
+                       class="form-control"
+                       value="https://youtu.be/-3fpji4xkus"
+                       id="url" />
+
+                <label for="width">Width</label>
+                <input name="width"
+                       value="100%"
+                       class="form-control"
+                       id="width" />
+
+                <a class="btn btn-default btn-block btn-success"
+                   href="widget-list.html"
+                   role="button">Confirm edit</a>
+
+                <a class="btn btn-default btn-block btn-danger"
+                   href="widget-list.html"
+                   role="button">Delete</a>
+            </div>
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="profile.html" class="glyphicon glyphicon-user"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

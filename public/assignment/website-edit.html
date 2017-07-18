@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Website</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="snb">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3 visible-md visible-lg">
+                    <div class="navbar-text navbar-text-no-left-margin pull-left">
+                        <a href="website-list.html">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Websites</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-9">
+                    <div class="navbar-text pull-right navbar-text-no-right-margin">
+                        <a href="website-list.html">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                    </div>
+                    <div class="visible-sm visible-xs navbar-text navbar-text-no-left-margin pull-left">
+                        <a href="website-list.html">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Edit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 visible-md visible-lg snb-split-view-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="row">
+                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-2">
+                                <a href="website-new.html">
+                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="page-list.html">
+                                    Facebook
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="website-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="page-list.html">
+                                    Google
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="website-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="page-list.html">
+                                    Twitter
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="website-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <a class="snb-link-blue" href="page-list.html">
+                                    Amazon
+                                </a>
+                            </div>
+                            <div class="col-xs-2">
+                                <a class="snb-link-blue" href="website-edit.html">
+                                    <span class="pull-right glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-9 snb-split-view-right">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input name="name"
+                               class="form-control"
+                               value="Facebook"
+                               id="name" />
+
+                        <label for="description">Description</label>
+                        <textarea name="description"
+                                  class="form-control"
+                                  rows="5"
+                                  id="description">Facebook is an American for-profit corporation and an online social media and social networking service based in Menlo Park, California. The Facebook website was launched on February 4, 2004, by Mark Zuckerberg, along with fellow Harvard College students and roommates, Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes.</textarea>
+
+                        <a class="btn btn-default btn-block btn-success"
+                           href="website-list.html"
+                           role="button">Confirm edit</a>
+
+                        <a class="btn btn-default btn-block btn-danger"
+                           href="website-list.html"
+                           role="button">Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="profile.html" class="glyphicon glyphicon-user"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
