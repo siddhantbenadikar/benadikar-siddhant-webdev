@@ -3,7 +3,7 @@ html {
     min-height: 100%;
 }
 
-input, textarea {
+input, textarea, select {
     margin-bottom: 5px;
 }
 
