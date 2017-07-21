@@ -1,0 +1,57 @@
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left navbar-text-no-left-margin">
+                <a href="#!/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">Websites</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-4">Name</div>
+                    <div class="col-xs-6 col-sm-4">Updated</div>
+                    <div class="col-sm-2 hidden-xs">Visited</div>
+                    <div class="col-xs-2">
+                        <a href="#!/user/{{model.userId}}/website/new">
+                            <span class="pull-right glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li ng-repeat="website in model.websites" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a class="snb-link-blue" href="#!/user/{{model.userId}}/website/{{website._id}}/page">
+                            {{website.name}}
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-4">2017-05-07</div>
+                    <div class="col-sm-2 hidden-xs">3,323,222</div>
+                    <div class="col-xs-2">
+                        <a class="snb-link-blue" href="#!/user/{{model.userId}}/website/{{website._id}}">
+                            <span class="pull-right glyphicon glyphicon-cog"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div ng-show="model.message" class="alert alert-info" role="alert">
+            {{model.message}}
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="#!/user/{{model.userId}}" class="glyphicon glyphicon-user"></a>
+            </div>
+        </div>
+    </footer>
