@@ -16,15 +16,6 @@
             { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
         ];
 
-        // var api ={
-        //     // "createWebsite": createWebsite,
-        //     // "findWebsitesByUser": findWebsitesByUser,
-        //     // "findWebsiteById": findWebsiteById,
-        //     // "updateWebsite": updateWebsite,
-        //     // "deleteWebsite": deleteWebsite,
-        // }
-        // return api;
-
         this.createWebsite = createWebsite;
         this.findWebsitesByUser = findWebsitesByUser;
         this.findWebsiteById = findWebsiteById;

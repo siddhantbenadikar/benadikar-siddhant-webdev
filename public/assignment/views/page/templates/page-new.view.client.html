@@ -1,40 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Page</title>
-    <link href="../vendor/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet"/>
 
-</head>
-<body>
-<div class="snb">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-3 visible-md visible-lg">
                     <div class="navbar-text navbar-text-no-left-margin pull-left">
-                        <a href="page-list.html">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </a>
                     </div>
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Pages</a>
+                        <a class="navbar-brand">Pages</a>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-9">
                     <div class="navbar-text pull-right navbar-text-no-right-margin">
-                        <a href="page-list.html">
+                        <a ng-click="model.addPage(model.page)">
                             <span class="glyphicon glyphicon-ok"></span>
                         </a>
                     </div>
                     <div class="visible-sm visible-xs navbar-text navbar-text-no-left-margin pull-left">
-                        <a href="page-list.html">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </a>
                     </div>
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">New Page</a>
+                        <a class="navbar-brand">New Page</a>
                     </div>
                 </div>
             </div>
@@ -48,63 +38,21 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="page-new.html">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
+                    <li ng-repeat="page in model.pages" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a class="snb-link-blue" href="widget-list.html">
-                                    Blogs
+                                <a class="snb-link-blue" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                                    {{page.name}}
                                 </a>
                             </div>
                             <div class="col-xs-2">
-                                <a class="snb-link-blue" href="page-edit.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a class="snb-link-blue" href="widget-list.html">
-                                    Home
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a class="snb-link-blue" href="page-edit.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a class="snb-link-blue" href="widget-list.html">
-                                    About
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a class="snb-link-blue" href="page-edit.html">
-                                    <span class="pull-right glyphicon glyphicon-cog"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                <a class="snb-link-blue" href="widget-list.html">
-                                    Contact Us
-                                </a>
-                            </div>
-                            <div class="col-xs-2">
-                                <a class="snb-link-blue" href="page-edit.html">
+                                <a class="snb-link-blue" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                                     <span class="pull-right glyphicon glyphicon-cog"></span>
                                 </a>
                             </div>
@@ -117,6 +65,7 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input name="name"
+                               ng-model="model.page.name"
                                class="form-control"
                                placeholder="Page Name"
                                id="name" />
@@ -124,16 +73,17 @@
                         <label for="description">Description</label>
                         <textarea name="description"
                                   class="form-control"
+                                  ng-model="model.page.description"
                                   rows="5"
                                   placeholder="Your description goes here..."
                                   id="description"></textarea>
 
                         <a class="btn btn-default btn-block btn-success"
-                           href="page-list.html"
+                           ng-click="model.addPage(model.page)"
                            role="button">Create</a>
 
                         <a class="btn btn-default btn-block btn-danger"
-                           href="page-list.html"
+                           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"
                            role="button">Cancel</a>
                     </div>
                 </form>
@@ -143,10 +93,7 @@
     <footer class="footer">
         <div class="container-fluid">
             <div class="pull-right">
-                <a href="views/user/templates/profile.view.client.html" class="glyphicon glyphicon-user"></a>
+                <a href="#!/user/{{model.userId}}" class="glyphicon glyphicon-user"></a>
             </div>
         </div>
     </footer>
-</div>
-</body>
-</html>

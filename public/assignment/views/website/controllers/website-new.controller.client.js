@@ -7,10 +7,8 @@
     function websiteNewController($routeParams, WebsiteService, $location) {
         var model = this;
         var userId = $routeParams.uid;
-        var websiteId = $routeParams.wid;
 
         model.userId = userId;
-        model.websiteId = websiteId;
 
         model.addWebsite = addWebsite;
 
