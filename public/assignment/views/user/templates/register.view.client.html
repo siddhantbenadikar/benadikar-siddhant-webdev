@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input name="username"
-                           ng-model="model.user.username"
+                           ng-model="user.username"
                            class="form-control"
                            placeholder="siddhantb"
                            id="username" />
@@ -23,7 +23,7 @@
                     <label for="password">Password</label>
                     <input name="password"
                            class="form-control"
-                           ng-model="model.user.password"
+                           ng-model="user.password"
                            placeholder="qwerty@123"
                            type="password"
                            id="password" />
@@ -31,13 +31,13 @@
                     <label for="verifyPassword">Verify Password</label>
                     <input name="verifyPassword"
                            class="form-control"
-                           ng-model="model.user.verifyPassword"
+                           ng-model="user.verifyPassword"
                            placeholder="qwerty@123"
                            type="password"
                            id="verifyPassword" />
 
                     <a class="btn btn-default btn-block btn-primary"
-                       ng-click="model.registerUser(model.user)"
+                       ng-click="model.registerUser(user)"
                        role="button">Register</a>
 
                     <a class="btn btn-default btn-block btn-danger"

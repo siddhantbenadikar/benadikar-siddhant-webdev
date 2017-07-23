@@ -1,0 +1,38 @@
+
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input name="Name"
+                   ng-model ="model.presentWidget.name"
+                   class="form-control"
+                   id="name" />
+
+            <label for="text">Text</label>
+            <input name="text"
+                   ng-model ="model.presentWidget.text"
+                   class="form-control"
+                   id="text" />
+
+            <label for="url">URL</label>
+            <input name="url"
+                   ng-model ="model.presentWidget.url"
+                   class="form-control"
+                   value="https://youtu.be/-3fpji4xkus"
+                   id="url" />
+
+            <label for="width">Width</label>
+            <input name="width"
+                   ng-model ="model.presentWidget.width"
+                   value="100%"
+                   class="form-control"
+                   id="width" />
+
+            <a class="btn btn-default btn-block btn-success"
+               ng-click="model.updateWidget()"
+               role="button">Confirm edit</a>
+
+            <a class="btn btn-default btn-block btn-danger"
+               ng-click="model.deleteWidget()"
+               role="button">Delete</a>
+        </div>
+    </form>

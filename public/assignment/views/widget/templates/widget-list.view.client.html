@@ -1,0 +1,62 @@
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right navbar-text-no-right-margin">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <div class="navbar-text navbar-text-no-left-margin pull-left">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">Widgets</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="alert alert-info" ng-show="model.message" role="alert">
+            {{model.message}}
+        </div>
+        <div ng-repeat="widget in model.widgets">
+            <div ng-switch="widget.widgetType">
+                    <div class="widget-divs">
+                        <div class="action-bar">
+                            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="snb-link-blue">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                            <a class="snb-link-black">
+                                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                            </a>
+                        </div>
+                        <div ng-switch-when="HEADING">
+                            <ng-include src="'views/widget/templates/widget-heading.view.client.html'"/>
+                        </div>
+                        <div ng-switch-when="IMAGE">
+                            <ng-include src="'views/widget/templates/widget-image.view.client.html'"/>
+                        </div>
+                        <div ng-switch-when="YOUTUBE">
+                            <ng-include src="'views/widget/templates/widget-youtube.view.client.html'"/>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="#!/user/{{model.userId}}" class="glyphicon glyphicon-user"></a>
+            </div>
+            <div class="pull-left">
+                <a class="padding-left-right">
+                    <span class="glyphicon glyphicon-play"></span>
+                </a>
+                <a class="padding-left-right">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </div>
+        </div>
+    </footer>

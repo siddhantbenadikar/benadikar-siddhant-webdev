@@ -1,0 +1,38 @@
+
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input name="Name"
+                   ng-model="model.presentWidget.name"
+                   class="form-control"
+                   id="name" />
+
+            <label for="text">Text</label>
+            <input name="text"
+                   ng-model="model.presentWidget.text"
+                   class="form-control"
+                   value="US Senate Reaches Compromise on Emergency Zika Funding"
+                   id="text" />
+
+            <label for="size">Size</label>
+            <select name="size"
+                    class="form-control"
+                    ng-model="model.presentWidget.size"
+                    id="size">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <a class="btn btn-default btn-block btn-success"
+               ng-click="model.updateWidget()"
+               role="button">Confirm edit</a>
+
+            <a class="btn btn-default btn-block btn-danger"
+               ng-click="model.deleteWidget()"
+               role="button">Delete</a>
+        </div>
+    </form>

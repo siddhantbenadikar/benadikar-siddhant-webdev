@@ -1,75 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Choose widget</title>
-    <link href="../vendor/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet"/>
 
-</head>
-<body>
-<div class="snb">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-left navbar-text-no-left-margin">
-                <a href="widget-list.html">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Choose Widget</a>
+                <a class="navbar-brand">Choose Widget</a>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
         <ul class="list-group">
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="widget-heading.html">
+                <a class="snb-link-blue" ng-click="model.createWidget('HEADING')">
                     Header
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('LABEL')">
                     Label
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('HTML')">
                     HTML
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('TEXT')">
                     Text Input
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('LINK')">
                     Link
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('BUTTON')">
                     Button
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="widget-image.html">
+                <a class="snb-link-blue" ng-click="model.createWidget('IMAGE')">
                     Image
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="widget-youtube.html">
+                <a class="snb-link-blue" ng-click="model.createWidget('YOUTUBE')">
                     Youtube
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('DATATABLE')">
                     Data Table
                 </a>
             </li>
             <li class="list-group-item snb-list-group-item">
-                <a class="snb-link-blue" href="#">
+                <a class="snb-link-blue" ng-click="model.createWidget('REPEATER')">
                     Repeater
                 </a>
             </li>
@@ -78,10 +68,7 @@
     <footer class="footer">
         <div class="container-fluid">
             <div class="pull-right">
-                <a href="views/user/templates/profile.view.client.html" class="glyphicon glyphicon-user"></a>
+                <a href="#!/user/{{model.userId}}" class="glyphicon glyphicon-user"></a>
             </div>
         </div>
     </footer>
-</div>
-</body>
-</html>

@@ -62,11 +62,11 @@
         
         function deletePage(pageId) {
             for(var p in pages) {
-                if(pages[p]._id === pageId) {
-                    pages.splice(w, 1);
-                }
+                if(pages[p]._id === pageId)
+                    pages.splice(p, 1);
             }
         }
+
     }
 
 })();

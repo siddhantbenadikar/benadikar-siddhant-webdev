@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-xs-12 col-md-9">
                     <div class="navbar-text pull-right navbar-text-no-right-margin">
-                        <a ng-click="model.addPage(model.page)">
+                        <a ng-click="model.addPage(page)">
                             <span class="glyphicon glyphicon-ok"></span>
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input name="name"
-                               ng-model="model.page.name"
+                               ng-model="page.name"
                                class="form-control"
                                placeholder="Page Name"
                                id="name" />
@@ -73,13 +73,13 @@
                         <label for="description">Description</label>
                         <textarea name="description"
                                   class="form-control"
-                                  ng-model="model.page.description"
+                                  ng-model="page.description"
                                   rows="5"
                                   placeholder="Your description goes here..."
                                   id="description"></textarea>
 
                         <a class="btn btn-default btn-block btn-success"
-                           ng-click="model.addPage(model.page)"
+                           ng-click="model.addPage(page)"
                            role="button">Create</a>
 
                         <a class="btn btn-default btn-block btn-danger"

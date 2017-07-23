@@ -1,0 +1,44 @@
+
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input name="Name"
+                   class="form-control"
+                   ng-model="model.presentWidget.name"
+                   id="name" />
+
+            <label for="text">Text</label>
+            <input name="text"
+                   class="form-control"
+                   ng-model="model.presentWidget.text"
+                   id="text" />
+
+            <label for="url">URL</label>
+            <input name="url"
+                   class="form-control"
+                   ng-model="model.presentWidget.url"
+                   placeholder="https://lh3.googleusercontent.com/Ffvfds.jpg"
+                   id="url" />
+
+            <label for="width">Width</label>
+            <input name="width"
+                   class="form-control"
+                   ng-model="model.presentWidget.width"
+                   value="100%"
+                   id="width" />
+
+            <label for="upload">Upload</label>
+            <input name="upload"
+                   class="form-control"
+                   type="file"
+                   id="upload"/>
+
+            <a class="btn btn-default btn-block btn-success"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
+               role="button">Upload</a>
+
+            <a class="btn btn-default btn-block btn-danger"
+               ng-click="model.deleteWidget()"
+               role="button">Delete</a>
+        </div>
+    </form>
