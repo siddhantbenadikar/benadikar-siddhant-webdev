@@ -31,7 +31,7 @@
         function findPageById(pageId) {
             for(var p in pages) {
                 if (pages[p]._id === pageId)
-                    return pages[p];
+                    return angular.copy(pages[p]);
             }
             return null;
         }
@@ -51,7 +51,7 @@
 
             for(var p in pages) {
                 if(pages[p].websiteId === websiteId) {
-                    webpages.push(pages[p]);
+                    webpages.push(angular.copy(pages[p]));
                 }
             }
             if(webpages.length > 0)

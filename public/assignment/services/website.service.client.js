@@ -34,7 +34,7 @@
 
             for(var w in websites) {
                 if(websites[w].developerId === userId) {
-                    sites.push(websites[w]);
+                    sites.push(angular.copy(websites[w]));
                 }
             }
             if(sites.length > 0)
@@ -46,7 +46,7 @@
         function findWebsiteById(websiteId) {
             for(var w in websites) {
                 if (websites[w]._id === websiteId)
-                    return websites[w];
+                    return angular.copy(websites[w]);
             }
             return null;
         }

@@ -16,6 +16,7 @@
         model.pageId = pageId;
 
         model.doYouTrustUrl = doYouTrustUrl;
+        model.doYouTrustHtml = doYouTrustHtml;
         
         function init() {
             var widgets = WidgetService.findWidgetsByPageId(pageId);
@@ -32,6 +33,10 @@
             var id = urlParts[urlParts.length - 1];
             baseUrl += id;
             return $sce.trustAsResourceUrl(baseUrl);
+        }
+
+        function doYouTrustHtml(htmlContent) {
+            return $sce.trustAsHtml(htmlContent);
         }
     }
 })();

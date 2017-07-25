@@ -38,7 +38,7 @@
             var widgetList= [];
             for (var w in widgets){
                 if(widgets[w].pageId === pageId){
-                    widgetList.push(widgets[w]);
+                    widgetList.push(angular.copy(widgets[w]));
                 }
             }
             if(widgetList.length > 0)
@@ -50,7 +50,7 @@
         function findWidgetById(widgetId){
             for(var w in widgets){
                 if(widgets[w]._id === widgetId)
-                    return widgets[w];
+                    return angular.copy(widgets[w]);
             }
             return null;
         }
