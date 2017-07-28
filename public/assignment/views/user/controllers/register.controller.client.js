@@ -12,26 +12,26 @@
         }init();
 
         function registerUser(user) {
-            if(!user) {
+            if (!user) {
                 model.errorMessage = "Please enter details";
                 return;
             }
-            var _user = UserService.findUserByUsername(user.username);
-            if(!_user) {
-                if(user.password === user.verifyPassword) {
-                    var user = UserService.createUser(user);
-                    if(user) {
-                        $location.url("/user/" + user._id);
-                    } else {
-                        model.errorMessage = "User not found"
+            UserService.findUserByUsername(user.username)
+                .then(function (response) {
+                    var _user = response.data;
+                    if (_user === "0") {
+                        if (user.password === user.verifyPassword)
+                            return UserService.createUser(user);
+                        else
+                            model.errorMessage = "Passwords do not match"
                     }
-                }
-                else
-                    model.errorMessage = "Passwords do not match"
-
-            } else {
-                model.errorMessage = "User already exists";
-            }
+                    else
+                        model.errorMessage = "User already exists";
+                })
+                .then(function (response) {
+                    _user = response.data;
+                    $location.url("/user/" + _user._id);
+                });
         }
 
     }

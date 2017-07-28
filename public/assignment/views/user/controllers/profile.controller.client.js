@@ -12,7 +12,10 @@
         model.unregister = unregister;
 
         function init() {
-            model.user = UserService.findUserById(userId);
+            UserService.findUserById(userId)
+                .then(function(response) {
+                    model.user = response.data;
+                });
         }init();
 
         function updateUser(user) {

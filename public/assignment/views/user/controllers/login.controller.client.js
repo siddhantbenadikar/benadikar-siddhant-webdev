@@ -1,7 +1,7 @@
 (function() {
     angular
         .module("WebAppMaker")
-        .controller("LoginController", loginController)
+        .controller("LoginController", loginController);
         
         function loginController($location, UserService) {
             var model = this;
@@ -16,15 +16,16 @@
                     model.errorMessage = "Please enter username and password";
                     return;
                 }
-                user = UserService.findUserByCredentials(user.username, user.password);
-                if(user) {
-                    $location.url("/user/" + user._id);
-                } else {
-                    model.errorMessage = "User not found"
-                }
+                UserService.findUserByCredentials(user.username, user.password)
+                    .then(function (response) {
+                        user = response.data;
+                        if(user === "0")
+                            model.errorMessage = "User not found"
+                        else
+                            $location.url("/user/" + user._id);
+                    });
             }
 
         }
-
     }
 )();
