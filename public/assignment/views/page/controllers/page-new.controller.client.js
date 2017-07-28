@@ -16,12 +16,14 @@
         model.addPage = addPage;
 
         function init() {
-            var pages = PageService.findPageByWebsiteId(websiteId);
-            if(pages) {
-                model.pages = pages;
-            } else {
-                model.message = "No pages to display"
-            }
+            PageService.findPageByWebsiteId(websiteId)
+                .then(function(response) {
+                    var pages = response.data;
+                    if(pages === "0")
+                        model.message = "No pages to display"
+                    else
+                        model.pages = pages;
+                });
         }init();
 
         function addPage(page) {
@@ -29,12 +31,10 @@
                 model.errorMessage = "Please enter details";
                 return;
             }
-            var page = PageService.createPage(websiteId, page);
-            if(page) {
-                $location.url("/user/" + userId + "/website/" + websiteId + "/page")
-            } else {
-                model.errorMessage = "Page not found";
-            }
+            PageService.createPage(websiteId, page)
+                .then(function () {
+                    $location.url("/user/" + userId + "/website/" + websiteId + "/page")
+                });
         }
     }
 })();

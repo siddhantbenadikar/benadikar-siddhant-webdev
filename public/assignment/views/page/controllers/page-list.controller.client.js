@@ -15,12 +15,14 @@
 
 
         function init() {
-            var pages = PageService.findPageByWebsiteId(websiteId);
-            if(pages) {
-                model.pages = pages;
-            } else {
-                model.message = "No pages to display"
-            }
+            PageService.findPageByWebsiteId(websiteId)
+                .then(function(response) {
+                    var pages = response.data;
+                    if(pages === "0")
+                        model.message = "No pages to display"
+                    else
+                        model.pages = pages;
+                });
         }init();
     }
 

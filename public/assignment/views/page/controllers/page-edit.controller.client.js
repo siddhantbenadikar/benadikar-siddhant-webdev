@@ -19,19 +19,19 @@
         model.deletePage = deletePage;
 
         function init() {
-            var pages = PageService.findPageByWebsiteId(websiteId);
-            if(pages) {
-                model.pages = pages;
-            } else {
-                model.message = "No pages to display"
-            }
+            PageService.findPageByWebsiteId(websiteId)
+                .then(function(response) {
+                    var pages = response.data;
+                    if(pages === "0")
+                        model.message = "No pages to display"
+                    else
+                        model.pages = pages;
+                });
 
-            var presentPage = PageService.findPageById(pageId);
-            if(presentPage) {
-                model.presentPage = presentPage;
-            } else {
-                model.errorMessage = "Page not found"
-            }
+            PageService.findPageById(pageId)
+                .then(function (response) {
+                    model.presentPage = response.data;
+                });
         }init();
         
         function updatePage() {

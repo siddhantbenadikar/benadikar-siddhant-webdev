@@ -29,7 +29,9 @@
                 return;
             }
             WebsiteService.createWebsite(userId, website)
-            $location.url("/user/"+userId+"/website/");
+                .then(function () {
+                    $location.url("/user/"+userId+"/website/");
+                });
         }
     }
 })();
