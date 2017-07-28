@@ -13,12 +13,14 @@
         model.addWebsite = addWebsite;
 
         function init() {
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            if(websites) {
-                model.websites = websites;
-            } else {
-                model.message = "No websites to display"
-            }
+            WebsiteService.findWebsitesByUser(userId)
+                .then(function(response) {
+                    var websites = response.data;
+                    if(websites === "0")
+                        model.message = "No websites to display"
+                    else
+                        model.websites = websites;
+                });
         }init();
         
         function addWebsite(website) {
@@ -26,12 +28,8 @@
                 model.errorMessage = "Please enter details";
                 return;
             }
-            var website = WebsiteService.createWebsite(userId, website);
-            if(website) {
-                $location.url("/user/"+userId+"/website/");
-            } else {
-                model.errorMessage = "Website not found";
-            }
+            WebsiteService.createWebsite(userId, website)
+            $location.url("/user/"+userId+"/website/");
         }
     }
 })();

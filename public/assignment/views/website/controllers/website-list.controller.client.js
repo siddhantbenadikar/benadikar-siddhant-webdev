@@ -8,15 +8,18 @@
         var model = this;
         var userId = $routeParams.uid;
 
-        function init() {
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            if(websites) {
-                model.websites = websites;
-            } else {
-                model.message = "No websites to display"
-            }
-        }init();
-
         model.userId = userId;
+
+        function init() {
+            WebsiteService.findWebsitesByUser(userId)
+                .then(function(response) {
+                    var websites = response.data;
+                    if(websites === "0")
+                        model.message = "No websites to display"
+                    else
+                        model.websites = websites;
+                });
+            
+        }init();
     }
 })();

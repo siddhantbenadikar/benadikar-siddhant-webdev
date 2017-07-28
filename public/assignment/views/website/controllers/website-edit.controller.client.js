@@ -18,19 +18,19 @@
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            if(websites) {
-                model.websites = websites;
-            } else {
-                model.message = "No websites to display"
-            }
+            WebsiteService.findWebsitesByUser(userId)
+                .then(function(response) {
+                    var websites = response.data;
+                    if(websites === "0")
+                        model.message = "No websites to display"
+                    else
+                        model.websites = websites;
+                });
 
-            var presentWebsite = WebsiteService.findWebsiteById(websiteId);
-            if(presentWebsite) {
-                model.presentWebsite = presentWebsite;
-            } else {
-                model.errorMessage = "Website not found"
-            }
+            WebsiteService.findWebsiteById(websiteId)
+                .then(function (response) {
+                    model.presentWebsite = response.data;
+                });
         }init();
 
 
