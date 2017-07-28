@@ -19,12 +19,14 @@
         model.doYouTrustHtml = doYouTrustHtml;
         
         function init() {
-            var widgets = WidgetService.findWidgetsByPageId(pageId);
-            if(widgets) {
-                model.widgets = widgets;
-            } else {
-                model.message = "No widgets to display"
-            }
+            WidgetService.findWidgetsByPageId(pageId)
+                .then(function(response) {
+                    var widgets = response.data;
+                    if(widgets === "0")
+                        model.message = "No widgets to display"
+                    else
+                        model.widgets = widgets;
+                });
         }init();
 
         function doYouTrustUrl(url) {

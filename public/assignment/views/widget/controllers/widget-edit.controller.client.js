@@ -21,19 +21,19 @@
         model.deleteWidget = deleteWidget;
 
         function init() {
-            var widgets = WidgetService.findWidgetsByPageId(pageId);
-            if(widgets) {
-                model.widgets = widgets;
-            } else {
-                model.message = "No pages to display"
-            }
+            WidgetService.findWidgetsByPageId(pageId)
+                .then(function(response) {
+                    var widgets = response.data;
+                    if(widgets === "0")
+                        model.message = "No widgets to display"
+                    else
+                        model.widgets = widgets;
+                });
 
-            var presentWidget = WidgetService.findWidgetById(widgetId);
-            if(presentWidget) {
-                model.presentWidget = presentWidget;
-            } else {
-                model.errorMessage = "Page not found"
-            }
+            WidgetService.findWidgetById(widgetId)
+                .then(function (response) {
+                    model.presentWidget = response.data;
+                });
         }init();
 
         function deleteWidget() {
@@ -43,7 +43,7 @@
         }
 
         function updateWidget() {
-            WidgetService.updateWidget(widgetId,model.presentWidget);
+            WidgetService.updateWidget(widgetId, model.presentWidget);
             model.message = "Updated successfully";
             $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
         }

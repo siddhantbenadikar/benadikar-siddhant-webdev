@@ -20,21 +20,25 @@
         model.createWidget = createWidget;
 
         function init() {
-            var widgets = WidgetService.findWidgetsByPageId(pageId);
-            if(widgets) {
-                model.widgets = widgets;
-            } else {
-                model.message = "No widgets to display"
-            }
+            WidgetService.findWidgetsByPageId(pageId)
+                .then(function(response) {
+                    var widgets = response.data;
+                    if(widgets === "0")
+                        model.message = "No widgets to display"
+                    else
+                        model.widgets = widgets;
+                });
         }init();
 
         function createWidget(type) {
             var newWidget = {};
             newWidget.widgetType = type;
-            var wgid = WidgetService.createWidget(pageId,newWidget);
-            $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+wgid);
+            WidgetService.createWidget(pageId, newWidget)
+                .then(function (response) {
+                    var wgid = response.data._id;
+                    $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+wgid);
+                });
         }
-
 
     }
 })();
