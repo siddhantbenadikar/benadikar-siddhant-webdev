@@ -17,6 +17,7 @@
 
         model.doYouTrustUrl = doYouTrustUrl;
         model.doYouTrustHtml = doYouTrustHtml;
+        model.updatePosition = updatePosition;
         
         function init() {
             WidgetService.findWidgetsByPageId(pageId)
@@ -39,6 +40,11 @@
 
         function doYouTrustHtml(htmlContent) {
             return $sce.trustAsHtml(htmlContent);
+        }
+        
+        function updatePosition(initial, final) {
+            WidgetService.updatePosition(initial, final, pageId)
+                .then(function widgets(){});
         }
     }
 })();

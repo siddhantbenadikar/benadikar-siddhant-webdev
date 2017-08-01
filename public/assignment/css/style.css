@@ -93,10 +93,10 @@ body {
 
 .snb .action-bar {
     position: absolute;
-    background-color: #f9fbfb;
+    background-color: rgba(249, 251, 251, 0.75);
     border-radius: 4px;
+    z-index: 2;
     right:10px;
-    z-index: 1;
     padding: 3px 3px 3px 3px;
 }
 

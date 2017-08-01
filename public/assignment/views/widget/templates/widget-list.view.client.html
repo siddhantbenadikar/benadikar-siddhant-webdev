@@ -20,6 +20,7 @@
         <div class="alert alert-info" ng-show="model.message" role="alert">
             {{model.message}}
         </div>
+        <div wbdv-sortable="">
         <div ng-repeat="widget in model.widgets">
             <div ng-switch="widget.widgetType">
                     <div class="widget-divs">
@@ -44,6 +45,7 @@
                         </div>
                     </div>
             </div>
+        </div>
         </div>
     </div>
 
