@@ -1,5 +1,5 @@
 
-    <form method="post">
+    <form method="post" action="/api/upload" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input name="Name"
@@ -24,18 +24,27 @@
             <input name="width"
                    class="form-control"
                    ng-model="model.presentWidget.width"
-                   value="100%"
                    id="width" />
 
-            <label for="upload">Upload</label>
-            <input name="upload"
-                   class="form-control"
-                   type="file"
-                   id="upload"/>
+            <!--<label for="upload">Upload</label>-->
+            <!--<input name="upload"-->
+                   <!--class="form-control"-->
+                   <!--type="file"-->
+                   <!--id="upload"/>-->
 
-            <a class="btn btn-default btn-block btn-success"
-               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
-               role="button">Upload</a>
+            <!--<a class="btn btn-default btn-block btn-success"-->
+               <!--href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"-->
+               <!--role="button">Upload</a>-->
+
+            <div class="form-group">
+                <label for="widgetUpload">Upload</label>
+                <input type="file" id="widgetUpload" name="myFile" class="form-control"/>
+                <input name="widgetId" value="{{model.presentWidget._id}}" style="display: none"/>
+                <input name="pageId" value="{{model.pageId}}" style="display: none"/>
+                <input name="userId" value="{{model.userId}}" style="display: none"/>
+                <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+            </div>
 
             <a class="btn btn-default btn-block btn-danger"
                ng-click="model.deleteWidget()"

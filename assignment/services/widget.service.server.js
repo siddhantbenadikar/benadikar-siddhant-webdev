@@ -23,6 +23,37 @@ module.exports = function (app) {
     app.delete("/api/widget/:widgetId", deleteWidget);
     // app.put("/page/:pageId/widget", sortable);
 
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
+    app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+    function uploadImage(req, res) {
+
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = req.body.pageId;
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        widget = getWidgetById(widgetId);
+        widget.url = '/uploads/'+filename;
+
+        var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/";
+
+        res.redirect(callbackUrl);
+    }
+
+
     function createWidget(req, res) {
         var widget = req.body;
         var pageId = req.params.pageId;
@@ -50,8 +81,10 @@ module.exports = function (app) {
     function findWidgetById(req, res){
         var widgetId = req.params.widgetId;
         for(var w in widgets){
-            if(widgets[w]._id === widgetId)
+            if(widgets[w]._id === widgetId) {
                 res.json(widgets[w]);
+                return;
+            }
         }
     }
 
@@ -74,6 +107,13 @@ module.exports = function (app) {
                 widgets.splice(w, 1);
                 return;
             }
+        }
+    }
+
+    function getWidgetById(widgetId) {
+        for(var w in widgets) {
+            if(widgets[w]._id === widgetId)
+                return widgets[w];
         }
     }
 };
