@@ -43,11 +43,12 @@
                 <input name="pageId" value="{{model.pageId}}" style="display: none"/>
                 <input name="userId" value="{{model.userId}}" style="display: none"/>
                 <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
-                <button style="margin-bottom: -10px;" type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                <a class="btn btn-primary btn-block"
+                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.presentWidget._id}}/flickr">Search</a>
+                <a class="btn btn-default btn-block btn-danger"
+                   ng-click="model.deleteWidget()">Delete</a>
             </div>
 
-            <a class="btn btn-default btn-block btn-danger"
-               ng-click="model.deleteWidget()"
-               role="button">Delete</a>
         </div>
     </form>
