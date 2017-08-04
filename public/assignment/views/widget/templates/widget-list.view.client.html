@@ -38,11 +38,15 @@
                         <div ng-switch-when="IMAGE">
                             <ng-include src="'views/widget/templates/widget-image.view.client.html'"/>
                         </div>
-                        <div ng-switch-when="YOUTUBE">
+                        <div ng-switch-when="YOUTUBE" class="youtube-widget">
                             <ng-include src="'views/widget/templates/widget-youtube.view.client.html'"/>
                         </div>
-                        <div ng-switch-when="HTML" ng-bind-html ="model.doYouTrustHtml(widget.text)">
+                        <div ng-switch-when="HTML">
+                            <ng-include src="'views/widget/templates/widget-html.view.client.html'"/>
                         </div>
+
+                        <!--<div ng-switch-when="HTML" ng-bind-html ="model.doYouTrustHtml(widget.text)">-->
+                        <!--</div>-->
                     </div>
             </div>
         </div>

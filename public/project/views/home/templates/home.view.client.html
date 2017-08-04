@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <h1>POC for Palate</h1>
+    <div class="row">
+
+        <div class="col-xs-12 col-md-4">
+            <h3>Search restaurant by location</h3>
+            <label for="location">Location</label>
+            <input name="location" id="location" type="text" placeholder="Boston, MA" ng-model="location" class="form-control">
+            <a class="btn btn-primary btn-block form-control" ng-click="model.searchRestaurantsByLocation(location)">Search</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <div ng-show="model.restaurants"><h3>Results:</h3></div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="restaurant in model.restaurants">
+                    <a href="#!/details/{{restaurant.id}}">{{restaurant.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
