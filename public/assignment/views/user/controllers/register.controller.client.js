@@ -19,7 +19,7 @@
             UserService.findUserByUsername(user.username)
                 .then(function (response) {
                     var _user = response.data;
-                    if (_user === "0") {
+                    if (_user === "") {
                         if (user.password === user.verifyPassword)
                             return UserService.createUser(user);
                         else
