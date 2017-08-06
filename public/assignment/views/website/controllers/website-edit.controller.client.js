@@ -21,7 +21,7 @@
             WebsiteService.findWebsitesByUser(userId)
                 .then(function(response) {
                     var websites = response.data;
-                    if(websites === "0")
+                    if(websites.length === 0)
                         model.message = "No websites to display"
                     else
                         model.websites = websites;
