@@ -19,7 +19,7 @@
             PageService.findPageByWebsiteId(websiteId)
                 .then(function(response) {
                     var pages = response.data;
-                    if(pages === "0")
+                    if(pages.length === 0)
                         model.message = "No pages to display"
                     else
                         model.pages = pages;
