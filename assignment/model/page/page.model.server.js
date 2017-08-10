@@ -56,11 +56,6 @@ function findPageById(pageId) {
     });
     return defer.promise;
 }
-// function findPageById(pageId) {
-//     return pageModel.findById(pageId)
-//         .populate('widgets')
-//         .exec();
-// }
 
 function updatePage(pageId, page) {
     var defer = q.defer();

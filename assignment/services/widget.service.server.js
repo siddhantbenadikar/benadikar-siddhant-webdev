@@ -1,6 +1,5 @@
 module.exports = function (app, widgetModel) {
 
-    var pageModel = require("../model/page/page.model.server");
     app.get("/api/page/:pageId/widget", findWidgetsByPageId);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.post("/api/page/:pageId/widget", createWidget);
@@ -30,8 +29,17 @@ module.exports = function (app, widgetModel) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        widget = getWidgetById(widgetId);
-        widget.url = '/uploads/'+filename;
+        //widget = getWidgetById(widgetId);
+        var nwidget = {};
+        nwidget.url = '/uploads/'+filename;
+        nwidget.size = size;
+        nwidget.text = filename;
+        widgetModel.findWidgetById(widgetId)
+            .then(function (widget) {
+                console.log(widget);
+                widget.url = nwidget.url;
+                widget.save();
+            });
 
         var callbackUrl = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/";
 
@@ -61,15 +69,6 @@ module.exports = function (app, widgetModel) {
             });
     }
 
-    // function findWidgetsByPageId(req, res){
-    //     var pageId = req.params.pageId;
-    //     widgetModel.findWidgetsByPageId(pageId)
-    //         .then(function (widgets) {
-    //             res.json(widgets)
-    //         }, function (error) {
-    //             res.sendStatus(500).send(error);
-    //         });
-    // }
     function findWidgetsByPageId(req, res){
         var pageId = req.params.pageId;
         widgetModel.findWidgetsByPageId(pageId)
@@ -113,12 +112,12 @@ module.exports = function (app, widgetModel) {
             });
     }
 
-    function getWidgetById(widgetId) {
-        widgetModel.findWidgetById(widgetId)
-            .then(function (widget) {
-                return widget;
-            }, function (error) {
-                return error;
-            });
-    }
+    // function getWidgetById(widgetId) {
+    //     widgetModel.findWidgetById(widgetId)
+    //         .then(function (widget) {
+    //             return widget;
+    //         }, function (error) {
+    //             return error;
+    //         });
+    // }
 };
