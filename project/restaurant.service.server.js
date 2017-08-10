@@ -22,6 +22,8 @@ module.exports = function (app) {
     }
 
     function zomatoFindLocation(location) {
+        location = location.replace(new RegExp(" ", 'g'), "%20");
+        location = location.replace(new RegExp(",", 'g'), "%2C");
         var defer = q.defer();
         https.get({
             host: 'developers.zomato.com',
@@ -62,7 +64,7 @@ module.exports = function (app) {
         var defer = q.defer();
         https.get({
             host: 'developers.zomato.com',
-            path: '/api/v2.1/search?entity_id=' + entityId + '&entity_type=' + entityType,
+            path: '/api/v2.1/search?entity_id=' + entityId + '&entity_type=' + entityType +"&sort=rating",
             headers: {
                 "Accept": "application/json",
                 "user-key": "aab0bf5a65624e10925ce1720007a332"
