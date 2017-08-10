@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var q = require('q');
-var db = require("../models.server");
 var pageSchema = require('./page.schema.server');
 var pageModel = mongoose.model('Page', pageSchema);
 
@@ -57,6 +56,11 @@ function findPageById(pageId) {
     });
     return defer.promise;
 }
+// function findPageById(pageId) {
+//     return pageModel.findById(pageId)
+//         .populate('widgets')
+//         .exec();
+// }
 
 function updatePage(pageId, page) {
     var defer = q.defer();

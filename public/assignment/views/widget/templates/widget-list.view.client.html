@@ -22,7 +22,7 @@
         </div>
         <div wbdv-sortable="">
         <div ng-repeat="widget in model.widgets">
-            <div ng-switch="widget.widgetType">
+            <div ng-switch="widget.type">
                     <div class="widget-divs">
                         <div class="action-bar">
                             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}" class="snb-link-blue">

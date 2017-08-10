@@ -16,7 +16,7 @@
         </div>
     </nav>
     <div class="container">
-        <div ng-switch="model.presentWidget.widgetType">
+        <div ng-switch="model.presentWidget.type">
             <div ng-switch-when="HEADING">
                 <ng-include src="'views/widget/templates/widget-heading-edit.view.client.html'"/>
             </div>

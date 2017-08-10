@@ -20,19 +20,11 @@
         model.createWidget = createWidget;
 
         function init() {
-            WidgetService.findWidgetsByPageId(pageId)
-                .then(function(response) {
-                    var widgets = response.data;
-                    if(widgets === "0")
-                        model.message = "No widgets to display"
-                    else
-                        model.widgets = widgets;
-                });
         }init();
 
         function createWidget(type) {
             var newWidget = {};
-            newWidget.widgetType = type;
+            newWidget.type = type;
             WidgetService.createWidget(pageId, newWidget)
                 .then(function (response) {
                     var wgid = response.data._id;

@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 var q = require('q');
-var db = require("../models.server");
 var websiteSchema = require('./website.schema.server');
 var websiteModel = mongoose.model('Website', websiteSchema);
 
 websiteModel.createWebsite = createWebsite;
-websiteModel.findWebsitesByUser = findWebsiteByUser;
+websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.updateWebsite = updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
@@ -36,7 +35,7 @@ function createWebsite(userId, website) {
     return defer.promise;
 }
 
-function findWebsiteByUser(userId) {
+function findWebsitesByUser(userId) {
     var defer = q.defer();
     websiteModel.find({_user: userId}, function (err, website) {
         if(err)

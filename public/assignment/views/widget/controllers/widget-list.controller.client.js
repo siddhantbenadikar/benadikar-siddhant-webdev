@@ -23,7 +23,7 @@
             WidgetService.findWidgetsByPageId(pageId)
                 .then(function(response) {
                     var widgets = response.data;
-                    if(widgets === "0")
+                    if(widgets.length === 0)
                         model.message = "No widgets to display"
                     else
                         model.widgets = widgets;
@@ -44,7 +44,7 @@
         
         function updatePosition(initial, final) {
             WidgetService.updatePosition(initial, final, pageId)
-                .then(function widgets(){});
+                .then(function (widgets){});
         }
     }
 })();

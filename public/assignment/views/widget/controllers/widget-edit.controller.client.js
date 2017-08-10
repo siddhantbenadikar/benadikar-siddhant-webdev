@@ -21,15 +21,6 @@
         model.deleteWidget = deleteWidget;
 
         function init() {
-            WidgetService.findWidgetsByPageId(pageId)
-                .then(function(response) {
-                    var widgets = response.data;
-                    if(widgets === "0")
-                        model.message = "No widgets to display"
-                    else
-                        model.widgets = widgets;
-                });
-
             WidgetService.findWidgetById(widgetId)
                 .then(function (response) {
                     model.presentWidget = response.data;
