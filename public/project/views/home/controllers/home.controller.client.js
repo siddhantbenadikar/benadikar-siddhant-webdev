@@ -15,8 +15,11 @@
         function searchRestaurantsByLocation(location) {
             RestaurantService.findLocation(location)
                 .then(function (response) {
-                    var entityId = response.data.entity_id;
-                    return RestaurantService.searchRestaurantsByLocation(entityId);
+                    var locationSuggestions = response.data.location_suggestions;
+                    var entityType = locationSuggestions[0].entity_type;
+                    var entityId = locationSuggestions[0].entity_id;
+                    entityId = entityId.toString();
+                    return RestaurantService.searchRestaurantsByLocation(entityId, entityType);
                 })
                 .then(function (response) {
                     model.restaurants = response.data.restaurants;
