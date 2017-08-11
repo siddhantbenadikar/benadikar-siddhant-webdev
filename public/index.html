@@ -1,37 +1,308 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
-</head>
-<body>
-    <h1>Web Dev Course Home Page</h1>
 
-    <p>
-        This is your website's home page. Your home page should have a picture of yourself, link to your assignments,
-        link to your final project implementation on Heroku, link to your GitHub,
-        link to a 5 minute video demoing your project. Your home page should look
-        spectacular. You should feel proud to share your homepage with your potential employer.
-        I should feel proud to share your homepage with my colleagues.
-    </p>
+<html class="no-js">
+    <!--<![endif]-->
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/">Project</a>
-        </li>
-        <li>
-            <a href="assignment/">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/siddhantbenadikar/benadikar-siddhant-webdev">Your public repository at GitHub.com</a>
-        </li>
-        <li>
-            <a href="/lectures">Lectures</a>
-        </li>
-    </ul>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="CS5610 landing page">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Siddhant Benadikar">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>CS5610 | Siddhant Benadikar</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+        <!-- Bootstrap and Font Awesome css -->
+        <link href="vendor/css/font-awesome.css" rel="stylesheet">
+        <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- owl carousel css -->
+
+        <link href="vendor/css/owl.carousel.css" rel="stylesheet">
+        <link href="vendor/css/owl.theme.css" rel="stylesheet">
+
+        <!-- Theme stylesheet -->
+        <link href="vendor/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+        <!-- Custom stylesheet - for your changes -->
+        <link href="vendor/css/custom.css" rel="stylesheet">
+
+        <!-- CSS Animations -->
+        <link href="vendor/css/animate.css" rel="stylesheet">
+
+
+        <!-- Mordernizr -->
+        <script src="vendor/js/modernizr-2.6.2.min.js"></script>
+
+        <!-- Responsivity for older IE -->
+        <!--[if lt IE 9]>
+        <script src="vendor/js/respond.min.js"></script>
+    <![endif]-->
+
+        <meta property="og:title" content="CS5610 | Siddhant Benadikar">
+        <meta property="og:site_name" content="CS5610 | Siddhant Benadikar">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:creator" content="@bootstrapious">
+
+    </head>
+
+    <body data-spy="scroll" data-target="#navigation" data-offset="120">
+
+
+        <!-- *** NAVBAR ***
+        _________________________________________________________ -->
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand scrollTo" href="#intro">Siddhant Benadikar</a>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navigation">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#intro">Intro</a>
+                        </li>
+                        <li><a href="#section1">My Work</a>
+                        </li>
+                        <li><a href="#section2">About me</a>
+                        <li><a href="#section3">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+
+            </div>
+        </div>
+        <!-- /#navbar -->
+
+        <!-- *** NAVBAR END *** -->
+
+
+        <div id="all">
+
+
+            <!-- *** INTRO IMAGE ***
+        _________________________________________________________ -->
+            <div id="intro" class="clearfix">
+                <div class="item">
+                    <div class="container">
+                        <div class="row">
+
+                            <h1 data-animate="fadeInDown">Hello, World!!!</h1>
+                            <p style="margin-top: 170px;" class="message" data-animate="fadeInUp">This is the home page for the Web Development(CS5610) course at Northeastern University for Summer 2017.</p>
+                            <p class="message" data-animate="fadeInUp">You can find links to my Resume, Assignments, Projects and more, below.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- *** INTRO IMAGE END *** -->
+
+
+
+            <!-- *** MY WORK ***
+        _________________________________________________________ -->
+            <div class="section" id="section1">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="title" data-animate="fadeInDown">My Work</h2>
+
+                        <p class="lead">These are the links to everything I have been working on during this course </p>
+
+                        <div class="row services">
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><a href="assignment/" class="fa fa-laptop"></a>
+                                </div>
+                                <h3 class="heading">Assignments</h3>
+                                <p>The website that I have built through a series of assignments will allow users to create and use online,
+                                    mobile friendly websites. It is a web application maker that allows developers to create their own websites.
+                                    The website has been built using the four underpinning technologies MongoDB, Express, AngularJS, and Node.js. </p>
+                            </div>
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><a href="project/" class="fa fa-cogs"></a>
+                                </div>
+                                <h3 class="heading">Project</h3>
+                                <p>Palate </p>
+                            </div>
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><a href="https://github.com/siddhantbenadikar/benadikar-siddhant-webdev" class="fa fa-github"></a>
+                                </div>
+                                <h3 class="heading">Github</h3>
+                                <p>Here is the link to my Github repository. </p>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row services">
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><i class="fa fa-bullhorn"></i>
+                                </div>
+                                <h3 class="heading">We will propagate your stuff</h3>
+                                <p>Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack.</p>
+                            </div>
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><i class="fa fa-desktop"></i>
+                                </div>
+                                <h3 class="heading">Responsive web and app</h3>
+                                <p>Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. </p>
+                            </div>
+
+                            <div class="col-md-4" data-animate="fadeInUp">
+                                <div class="icon"><i class="fa fa-heart-o"></i> 
+                                </div>
+                                <h3 class="heading">Dedicated support team</h3>
+                                <p>Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my brave ghost pled. </p>
+                            </div>
+
+                        </div> -->
+
+                    </div>
+                    <!-- /.12 -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.section -->
+
+            <!-- *** SERVICES END *** -->
+
+
+            <!-- *** ABOUT ME ***
+        _________________________________________________________ -->
+
+            <div class="section  text-gray" id="section2">
+                <div class="container">
+                    <div class="col-md-12">
+
+
+                        <h2 class="title" data-animate="fadeInDown">About me</h2>
+
+                        <div class="row">
+
+                            <div class="col-md-8 col-md-offset-2">
+
+                                <p class="text-large text-thin"  data-animate="fadeInUp">I am currently pursuing my Master of Science in Computer Science at Northeastern University. I enjoy working on creative and innovative software development projects. Web designing has been one of the hobbies during my early student years. However, now I have found keen interest in the domain of Data Science.</p>
+
+                                <p data-animate="fadeInUp"><a href="https://drive.google.com/file/d/0ByAyPXqTLTnlLTdFV0xPbFZDY3c/view?usp=sharing"><img src="vendor/img/3.jpg" alt="my pic" class="img-circle img-responsive benadikar-siddhant"></a></p>
+
+                                <p data-animate="fadeInUp">Click on the image to view my Resume.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.12 -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.section -->
+
+            <!-- *** ABOUT ME END *** -->
+
+            <!-- *** CONTACT ***
+        _________________________________________________________ -->
+
+            <div class="section" id="section3" >
+                <div class="container">
+                    <div class="col-md-8 col-md-offset-2">
+
+
+                        <h2 class="title" data-animate="fadeInDown">Contact me</h2>
+
+                        <p class="lead margin-bottom" data-animate="fadeInUp">
+                            <b>Start a Conversation.</b> <br>
+                            Share Your Story<br>
+                            Tell me a Joke<br>
+                            What are your Hobbies<br>
+                            How did you find this Website<br>
+                            You can also follow me on social media. I try to post often on Instagram and Twitter</p>
+
+
+                        <ul class="list-unstyled text-large text-thin" data-animate="fadeInUp">
+                            <li><strong>E-mail:</strong> siddhantn@hotmail.com</li>
+                            <li><strong>Phone:</strong> +1-857-350-5812</li>
+                        </ul>
+
+                    </div>
+                    <!-- /.12 -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.section -->
+
+
+
+            <!-- *** FOOTER ***
+        _________________________________________________________ -->
+
+            <div class="section" id="footer">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-sm-6">
+
+                            <p class="social">
+                                <a href="https://www.facebook.com/siddhant.nandkumar" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.linkedin.com/in/siddhant-benadikar-75ab56a1/" class="external linkedin" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/siddhant_nandkumar/" class="external instagram" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-instagram"></i></a>
+                                <a href="https://twitter.com/Siddhant_17" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
+                                <a href="mailto:siddhantn@hotmail.com" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+                        <!-- /.6 -->
+
+                        <div class="col-sm-6">
+                            <p>&copy; 2017 Siddhant Benadikar.
+                                <!-- Do not remove the attribution, thx! If you need to do so, pls donate (http://bootstrapious.com/donate) to support us! -->
+                                Template credit: <a href="https://www.bootstrapious.com/landing-pages" class="external">Bootstrapious</a>.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.section -->
+
+            <!-- *** FOOTER END *** -->
+        </div>
+
+        <!-- js base -->
+        <script src="vendor/js/jquery-1.11.0.min.js"></script>
+        <script src="vendor/js/bootstrap.min.js"></script>
+
+
+        <!-- waypoints for scroll spy -->
+        <script src="vendor/js/waypoints.min.js"></script>
+
+        <!-- owl carousel -->
+        <script src="vendor/js/owl.carousel.min.js"></script>
+
+        <!-- jQuery scroll to -->
+        <script src="vendor/js/jquery.scrollTo.min.js"></script>
+
+        <!-- main js file -->
+
+        <script src="vendor/js/front.js"></script>
+
+
+    </body>
 </html>
