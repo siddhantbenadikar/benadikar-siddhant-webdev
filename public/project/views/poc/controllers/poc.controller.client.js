@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("Palate")
-        .controller("HomeController", homeController);
+        .controller("PocController", pocController);
     
-    function homeController(RestaurantService) {
+    function pocController(RestaurantService) {
         var model = this;
 
         model.searchRestaurantsByLocation = searchRestaurantsByLocation;

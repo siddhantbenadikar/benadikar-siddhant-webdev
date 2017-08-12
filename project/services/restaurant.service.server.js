@@ -5,9 +5,9 @@ const querystring = require('querystring');
 
 module.exports = function (app) {
 
-    app.get("/api/location/:location", findLocation);
-    app.get("/api/restaurant", searchRestaurantsByLocation);
-    app.get("/api/restaurant/:rid", searchRestaurantById);
+    app.get("/pal/location/:location", findLocation);
+    app.get("/pal/restaurant", searchRestaurantsByLocation);
+    app.get("/pal/restaurant/:rid", searchRestaurantById);
     
 
 

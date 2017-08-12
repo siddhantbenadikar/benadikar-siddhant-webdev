@@ -1,0 +1,61 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f9fbfb;
+    padding-top: 45px;
+    margin-bottom: 60px;
+}
+
+input, textarea, select {
+    margin-bottom: 5px;
+}
+
+.snb-header-class{
+    /*background-color: #7b080c;*/
+    background-color: #E52B50;
+}
+
+#snb-title-website {
+    font-size: 25px;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar a:hover {
+    color: #222222;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.navbar-brand :hover{
+    color: white;
+}
+
+.navbar-toggle{
+    color:white;
+}
+
+#exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 {
+    margin-top: 10px;
+}
+
+#exTab3 .tab-content {
+    color : #222222;
+    background-color: #f9fbfb;
+}
+
+#exTab3 .link-red {
+    color:#E52B50;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #E52B50;
+}

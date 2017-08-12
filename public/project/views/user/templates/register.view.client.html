@@ -1,0 +1,56 @@
+
+<div class="container">
+    <h2>Register</h2>
+    <div ng-show="model.errorMessage" class="alert alert-danger" role="alert">
+        {{model.errorMessage}}
+    </div>
+    <form method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input name="username"
+                   ng-model="user.username"
+                   class="form-control"
+                   placeholder="* Required"
+                   id="username" />
+
+            <label for="password">Password</label>
+            <input name="password"
+                   class="form-control"
+                   ng-model="user.password"
+                   placeholder="* Required"
+                   type="password"
+                   id="password" />
+
+            <label for="verifyPassword">Verify Password</label>
+            <input name="verifyPassword"
+                   class="form-control"
+                   ng-model="user.verifyPassword"
+                   placeholder="* Required"
+                   type="password"
+                   id="verifyPassword" />
+
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   ng-model="user.firstName"
+                   class="form-control"
+                   placeholder="* Required"
+                   id="firstName" />
+
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   ng-model="user.lastName"
+                   class="form-control"
+                   placeholder="* Required"
+                   id="lastName" />
+
+            <a class="btn btn-default btn-block btn-primary"
+               ng-click="model.registerUser(user)"
+               role="button">Register</a>
+
+            <a class="btn btn-default btn-block btn-danger"
+               href="#!/login"
+               role="button">Cancel</a>
+
+        </div>
+    </form>
+</div>
