@@ -23,14 +23,11 @@
         }
 
         function logout() {
-            UserService.setCurrentUser(null);
-            $location.url("/");
-            // UserService
-            //     .logout()
-            //     .then(function () {
-            //         UserService.setCurrentUser(null);
-            //         $location.url("/");
-            //     });
+            UserService.logout()
+                .then(function () {
+                    UserService.setCurrentUser(null);
+                    $location.url("/");
+                });
         }
 
         function home() {

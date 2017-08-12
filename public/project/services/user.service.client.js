@@ -10,15 +10,15 @@
         var baseUserUrl = "/pal/user/";
         var api = {
             logout: logout,
+            register: register,
 
             createUserByAdmin: createUserByAdmin,
             deleteUserByAdmin: deleteUserByAdmin,
             findAllUsersForAdmin: findAllUsersForAdmin,
             updateUserByAdmin: updateUserByAdmin,
 
-            createUser: createUser,
             findUserByUsername: findUserByUsername,
-            findUserByCredentials: findUserByCredentials,
+            findUserByCredentials: login,
             deleteUser: deleteUser,
             findAllFollowingUsers: findAllFollowingUsers,
             findAllFollowers: findAllFollowers,
@@ -36,9 +36,18 @@
         };
         return api;
 
+        function login(user) {
+            return $http.post("/pal/login", user);
+        }
+
         function logout() {
             var url = "/pal/logout";
             return $http.post(url);
+        }
+
+        function register(user) {
+            var url = "/pal/register";
+            return $http.post(url, user);
         }
 
         function createUserByAdmin(user) {
@@ -76,9 +85,6 @@
             return $http.get(url);
         }
 
-        function findUserByCredentials(username, password) {
-            return $http.get("/pal/user?username=" + username + "&password=" + password);
-        }
 
         function findUserByUsername(username) {
             return $http.get("/pal/user?username=" + username);

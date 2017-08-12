@@ -13,44 +13,42 @@
 
         function registerUser(user) {
             if (validate(user) === undefined) {
-                model.errorMessage = "Please enter all details";
-                return;
-            }
-            UserService.findUserByUsername(user.username)
-                .then(function (response) {
-                    var _user = response.data;
-                    if (_user === "") {
-                        if (user.password === user.verifyPassword)
-                            return UserService.createUser(user);
+                UserService
+                    .register(user)
+                    .then(function (response) {
+                        var resUser = response.data;
+                        if (resUser) {
+                            UserService.setCurrentUser(resUser);
+                            $location.url("/user/" + resUser._id);
+                        }
+                    }, function (error) {
+                        if (error.status === 409)
+                            model.errorMessage = "Username taken";
                         else
-                            model.errorMessage = "Passwords do not match"
-                    }
-                    else
-                        model.errorMessage = "User already exists";
-                })
-                .then(function (response) {
-                    _user = response.data;
-                    UserService.setCurrentUser(_user);
-                    $location.url("/user/" + _user._id);
-                });
+                            model.errorMessage = "Unable to create user";
+                    });
+            } else {
+                model.errorMessage = "Please fill all details";
+            }
         }
 
         function validate(user) {
-            var flag = true;
-
+            var f = true;
             if (user) {
-                flag = flag && user.username;
-                flag = flag && user.password;
-                flag = flag && user.firstName;
-                flag = flag && user.lastName;
-                flag = flag && user.email;
+                f = f && user.username;
+                f = f && user.password;
+                f = f && user.firstName;
+                f = f && user.lastName;
+                f = f && user.email;
+                if (user.password === user.verifyPassword)
+                    f = f && true;
+                else
+                    f = f && false;
             }
             else {
-                flag = false;
+                f = false;
             }
-
-            return flag;
-
+            return f;
         }
 
     }

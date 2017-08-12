@@ -3,18 +3,44 @@ module.exports = function (app) {
     var userModel = require('../model/user/user.model.server');
     // var restaurantModel = require('../model/restaurant/restaurant.model.server');
 
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    var auth = authorized;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+    // REQUESTS
+    // Login and logout requests
+    app.post('/pal/login', passport.authenticate('local'), login);
     app.post('/pal/logout', logout);
+    app.post('/pal/register', register);
+    app.get('/pal/loggedin', loggedIn);
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile','email']}));
+    app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/project/#/profile/null/edit-profile',
+            failureRedirect: '/project/#/login'
+        }));
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/project/#/profile/null/edit-profile',
+            failureRedirect: '/project/#/login'
+        }));
 
     // Admin requests
-    app.post('/pal/admin/user', createUserByAdmin);
-    app.get('/pal/admin/users', findAllUsersForAdmin);
-    app.put('/pal/admin/user/:uid', updateUserByAdmin);
-    app.delete('/pal/admin/user/:uid', deleteUserByAdmin);
+    app.post('/pal/admin/user', auth, createUserByAdmin);
+    app.get('/pal/admin/users', auth, findAllUsersForAdmin);
+    app.put('/pal/admin/user/:uid', auth, updateUserByAdmin);
+    app.delete('/pal/admin/user/:uid', auth, deleteUserByAdmin);
 
     // CRUD requests
     app.get("/pal/user", findUser);
     app.get("/pal/user/:userId", findUserById);
-    app.post("/pal/user", createUser);
     app.put("/pal/user/:userId", updateUser);
     app.delete("/pal/user/:userId", deleteUser);
     app.put('/pal/user/:uid/restaurant/:rid/like', likeRestaurant);
@@ -26,22 +52,85 @@ module.exports = function (app) {
     app.get('/pal/user/:uid/following', findAllFollowingUsers);
     app.get('/pal/user/:uid/followers', findAllFollowers);
     app.get('/pal/user/:uid/likes', findAllLikedRestaurants);
+///////////////////////////////////////////////////////////////////////////////////////////////
+    // PASSPORT CONFIGURATIONS
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel.findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
+    function localStrategy(username, password, done) {
+        userModel.findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if(user.username === username && user.password === password) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+
+    function authorized(req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        } else {
+            next();
+        }
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////
+    // REQUEST FUNCTIONS
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
+    }
 
     function logout(req, res) {
-        req.logout();
+        req.logOut();
         res.sendStatus(200);
     }
 
-    function createUser(req, res){
-        var newUser = req.body;
-        userModel
-            .createUser(newUser)
-            .then(function (user) {
-                res.json(user);
-            }, function (error) {
-                res.sendStatus(500).send(error);
-            });
+    function loggedIn(req, res) {
+        res.send(req.isAuthenticated() ? req.user : null);
+    }
 
+    function register(req, res) {
+        var user = req.body;
+        userModel
+            .createUser(user)
+            .then(function (user) {
+                if (user) {
+                    req.login(user, function (err) {
+                        if (err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    });
+                }
+            }, function (err) {
+                if (err.code === 11000)
+                    res.status(409).send("Duplicate username");
+                else
+                    res.status(400).send(err);
+            });
     }
 
     function updateUser(req, res){
@@ -69,8 +158,9 @@ module.exports = function (app) {
     }
 
     function findUser(req, res){
-        var username = req.query.username;
-        var password = req.query.password;
+        var body = req.body;
+        var username = body.username;
+        var password = body.password;
         if(username && password){
             findUserByCredentials(req, res);
         }
@@ -91,7 +181,8 @@ module.exports = function (app) {
     }
 
     function findUserByUsername(req, res){
-        var username = req.query.username;
+        var body = req.body;
+        var username = body.username;
         userModel.findUserByUsername(username)
             .then(function (user) {
                 res.send(user);

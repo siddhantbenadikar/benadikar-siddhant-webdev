@@ -16,7 +16,7 @@
                     model.errorMessage = "Please enter username and password";
                     return;
                 }
-                UserService.findUserByCredentials(user.username, user.password)
+                UserService.findUserByCredentials(user)
                     .then(function (response) {
                         user = response.data;
                         if(user === null)
