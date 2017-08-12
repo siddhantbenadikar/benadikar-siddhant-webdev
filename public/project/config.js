@@ -20,27 +20,30 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:userId", {
+            .when("/user", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
-            .when("/user/:userId/followers", {
+            .when("/user/followers", {
                 templateUrl: "views/user/templates/profile-followers.view.client.html",
                 controller: "ProfileFollowersController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/following", {
+            .when("/user/following", {
                 templateUrl: "views/user/templates/profile-following.view.client.html",
                 controller: "ProfileFollowingController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/reviews", {
+            .when("/user/reviews", {
                 templateUrl: "views/user/templates/profile-reviews.view.client.html",
                 controller: "ProfileReviewsController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/likes", {
+            .when("/user/likes", {
                 templateUrl: "views/user/templates/profile-likes.view.client.html",
                 controller: "ProfileLikesController",
                 controllerAs: "model"
@@ -55,6 +58,23 @@
                 controller: "DetailsController",
                 controllerAs: "model"
             });
-
     }
+
+    function checkLoggedIn($q, UserService, $location) {
+        var defer = $q.defer();
+        UserService
+            .getCurrentUser()
+            .then(function (response) {
+                var user = response.data;
+                if(user) {
+                    UserService.setCurrentUser(user);
+                    defer.resolve(user);
+                } else {
+                    defer.reject();
+                    $location.url('/');
+                }
+            });
+        return defer.promise;
+    }
+
 })();

@@ -4,9 +4,9 @@
         .module("Palate")
         .controller("ProfileController", profileController);
 
-    function profileController($routeParams, $location, UserService) {
+    function profileController($routeParams, $location, UserService, checkLoggedIn) {
         var model = this;
-        var userId = $routeParams['userId'];
+        var userId = checkLoggedIn._id;
 
         model.updateUser = updateUser;
         model.unregister = unregister;
