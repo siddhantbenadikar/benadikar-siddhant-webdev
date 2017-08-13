@@ -57,6 +57,11 @@
                 templateUrl: "views/details/templates/details.view.client.html",
                 controller: "DetailsController",
                 controllerAs: "model"
+            })
+            .when("/search/users", {
+                templateUrl: "views/user/templates/search-users.view.client.html",
+                controller: "SearchUsersController",
+                controllerAs: "model"
             });
     }
 

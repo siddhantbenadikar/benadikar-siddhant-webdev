@@ -39,6 +39,7 @@ module.exports = function (app) {
     app.delete('/pal/admin/user/:uid', auth, deleteUserByAdmin);
 
     // CRUD requests
+    app.get("/pal/search/users", getAllUsers);
     app.get("/pal/user", findUser);
     app.get("/pal/user/:userId", findUserById);
     app.put("/pal/user/:userId", updateUser);
@@ -96,6 +97,16 @@ module.exports = function (app) {
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////
     // REQUEST FUNCTIONS
+
+    function getAllUsers(req, res) {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.json(users);
+            }, function (error) {
+                res.sendStatus(500).send(error);
+            });
+    }
 
     function login(req, res) {
         var user = req.user;

@@ -18,6 +18,7 @@
             updateUserByAdmin: updateUserByAdmin,
 
             findUserByUsername: findUserByUsername,
+            getAllUsers: getAllUsers,
             findUserByCredentials: login,
             deleteUser: deleteUser,
             findAllFollowingUsers: findAllFollowingUsers,
@@ -35,6 +36,10 @@
             updateUser: updateUser
         };
         return api;
+
+        function getAllUsers() {
+            return $http.get("/pal/search/users");
+        }
 
         function login(user) {
             return $http.post("/pal/login", user);
