@@ -74,11 +74,7 @@
             var url = baseAdminUrl + "/" + userId;
             return $http.put(url, user);
         }
-
-        function createUser(user) {
-            var url = baseUserUrl;
-            return $http.post(url, user);
-        }
+        
 
         function updateUser(userId, user) {
             var url = baseUserUrl + userId;
@@ -131,13 +127,13 @@
             return $http.get(url);
         }
 
-        function isLiked(userId, movieId) {
-            var url = baseUserUrl + userId + "/restaurant/" + movieId + "/isLiked";
+        function isLiked(userId, rid) {
+            var url = baseUserUrl + userId + "/restaurant/" + rid + "/isLiked";
             return $http.get(url);
         }
 
-        function like(userId, movieId) {
-            var url = baseUserUrl + userId + "/restaurant/" + movieId + "/like";
+        function like(userId, rid) {
+            var url = baseUserUrl + userId + "/restaurant/" + rid + "/like";
             return $http.put(url);
         }
         
@@ -150,8 +146,8 @@
             return $http.put(url);
         }
 
-        function unlike(userId, movieId) {
-            var url = baseUserUrl + userId + "/restaurant/" + movieId + "/unlike";
+        function unlike(userId, rid) {
+            var url = baseUserUrl + userId + "/restaurant/" + rid + "/unlike";
             return $http.put(url);
         }
         

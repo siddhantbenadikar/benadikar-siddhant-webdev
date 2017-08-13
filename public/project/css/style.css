@@ -72,3 +72,13 @@ input, textarea, select {
 #exTab3 .padding-top-seven {
     padding-top: 7px;
 }
+
+.media-object-restaurant, .profile-photo {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.thumbnail{
+    /*border: solid 1px #7b080c;*/
+    border-color: #E52B50;
+}
