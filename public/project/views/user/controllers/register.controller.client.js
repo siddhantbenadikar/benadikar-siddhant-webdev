@@ -19,7 +19,7 @@
                         var resUser = response.data;
                         if (resUser) {
                             UserService.setCurrentUser(resUser);
-                            $location.url("/user");
+                            $location.url("/user/" + resUser._id);
                         }
                     }, function (error) {
                         if (error.status === 409)

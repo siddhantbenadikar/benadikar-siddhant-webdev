@@ -9,23 +9,23 @@
             </a>
         </li>
         <li>
-            <a class="link-red" href="#!/user/followers" data-toggle="tab">
+            <a class="link-red" href="#!/user/{{model.user._id}}/followers" data-toggle="tab">
                 <h5>
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    Followers
+                    Followers ({{model.user.followers.length}})
                 </h5>
             </a>
         </li>
         <li>
-            <a class="link-red" href="#!/user/following" data-toggle="tab">
+            <a class="link-red" href="#!/user/{{model.user._id}}/following" data-toggle="tab">
                 <h5>
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    Following
+                    Following ({{model.user.following.length}})
                 </h5>
             </a>
         </li>
         <li>
-            <a class="link-red" href="#!/user/reviews" data-toggle="tab">
+            <a class="link-red" href="#!/user/{{model.user._id}}/reviews" data-toggle="tab">
                 <h5>
                     <i class="fa fa-comments" aria-hidden="true"></i>
                     Reviews
@@ -33,10 +33,10 @@
             </a>
         </li>
         <li>
-            <a class="link-red" href="#!/user/likes" data-toggle="tab">
+            <a class="link-red" href="#!/user/{{model.user._id}}/likes" data-toggle="tab">
                 <h5>
                     <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    Likes
+                    Likes ({{model.user.restaurantLikes.length}})
                 </h5>
             </a>
         </li>

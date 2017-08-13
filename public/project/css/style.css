@@ -38,12 +38,8 @@ input, textarea, select {
     color:white;
 }
 
-#exTab3 .nav-pills > li > a {
-    border-radius: 4px 4px 0 0 ;
-}
-
 #exTab3 {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #exTab3 .tab-content {
@@ -58,4 +54,11 @@ input, textarea, select {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
     background-color: #E52B50;
+}
+
+.btn-group-sm>.btn, .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0;
 }

@@ -23,7 +23,7 @@
                             model.errorMessage = "User not found"
                         else
                             UserService.setCurrentUser(user);
-                            $location.url("/user");
+                            $location.url("/user/" + user._id);
                     });
             }
 

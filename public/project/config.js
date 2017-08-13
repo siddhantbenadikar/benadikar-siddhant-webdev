@@ -20,7 +20,7 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user", {
+            .when("/user/:userId", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
@@ -28,22 +28,22 @@
                     checkLoggedIn: checkLoggedIn
                 }
             })
-            .when("/user/followers", {
+            .when("/user/:userId/followers", {
                 templateUrl: "views/user/templates/profile-followers.view.client.html",
                 controller: "ProfileFollowersController",
                 controllerAs: "model"
             })
-            .when("/user/following", {
+            .when("/user/:userId/following", {
                 templateUrl: "views/user/templates/profile-following.view.client.html",
                 controller: "ProfileFollowingController",
                 controllerAs: "model"
             })
-            .when("/user/reviews", {
+            .when("/user/:userId/reviews", {
                 templateUrl: "views/user/templates/profile-reviews.view.client.html",
                 controller: "ProfileReviewsController",
                 controllerAs: "model"
             })
-            .when("/user/likes", {
+            .when("/user/:userId/likes", {
                 templateUrl: "views/user/templates/profile-likes.view.client.html",
                 controller: "ProfileLikesController",
                 controllerAs: "model"
