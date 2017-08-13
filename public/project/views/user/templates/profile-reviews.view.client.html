@@ -1,58 +1,121 @@
 <div id="exTab3" class="container">
-    <ul class="nav nav-pills">
-        <li>
-            <a class="link-red" href="#!/user/{{model.navUserId}}" data-toggle="tab">
-                <h5>
-                    <i class="fa fa-cog" aria-hidden="true"></i>
-                    Edit Profile
-                </h5>
+    <div class="profile-name" ng-hide="model.user._id == model.navUserId">
+        <div class="pull-right padding-top-seven">
+            <a href=""
+               ng-click="model.followFromProfile()"
+               ng-hide="model.alreadyFollowing"
+               class="btn-sm btn-success">Follow
             </a>
-        </li>
-        <li>
-            <a class="link-red" href="#!/user/{{model.navUserId}}/followers" data-toggle="tab">
-                <h5>
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    Followers
-                </h5>
+            <a href=""
+               ng-click="model.unfollowFromProfile()"
+               ng-show="model.alreadyFollowing"
+               class="btn-sm btn-danger">Unfollow
             </a>
-        </li>
-        <li>
-            <a class="link-red" href="#!/user/{{model.navUserId}}/following" data-toggle="tab">
-                <h5>
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    Following
-                </h5>
-            </a>
-        </li>
-        <li class="active" >
-            <a data-toggle="tab">
-                <h5>
-                    <i class="fa fa-comments" aria-hidden="true"></i>
-                    Reviews
-                </h5>
-            </a>
-        </li>
-        <li>
-            <a class="link-red" href="#!/user/{{model.navUserId}}/likes" data-toggle="tab">
-                <h5>
-                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    Likes
-                </h5>
-            </a>
-        </li>
-        <li>
-            <a class="link-red" href="#!/search/users" data-toggle="tab">
-                <h5>
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                    Search Users
-                </h5>
-            </a>
-        </li>
-    </ul>
+        </div>
+        <h2 style="display:inline">{{model.navUser.firstName}} {{model.navUser.lastName}}</h2>
+    </div>
+    <div class="profile-navbar">
+        <ul class="nav nav-pills">
+            <li ng-hide="model.user._id != model.navUserId">
+                <a class="link-red" href="#!/user/{{model.navUserId}}" data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        Edit Profile
+                    </h5>
+                </a>
+            </li>
+            <li>
+                <a class="link-red" href="#!/user/{{model.navUserId}}/followers" data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        Followers ({{model.navUser.followers.length}})
+                    </h5>
+                </a>
+            </li>
+            <li>
+                <a class="link-red" href="#!/user/{{model.navUserId}}/following" data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        Following ({{model.navUser.following.length}})
+                    </h5>
+                </a>
+            </li>
+            <li class="active">
+                <a data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-comments" aria-hidden="true"></i>
+                        Reviews
+                    </h5>
+                </a>
+            </li>
+            <li>
+                <a class="link-red" href="#!/user/{{model.navUserId}}/likes" data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        Likes ({{model.navUser.restaurantLikes.length}})
+                    </h5>
+                </a>
+            </li>
+            <li ng-hide="model.user._id != model.navUserId">
+                <a class="link-red" href="#!/search/users" data-toggle="tab">
+                    <h5>
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                        Search Users
+                    </h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+
 
     <div class="tab-content clearfix">
         <div class="tab-pane active">
+            <h3 class="page-header less-top-margin">Reviews</h3>
 
+            <div class="row" ng-hide="model.reviews.length > 0">
+                <div class="alert alert-info alert-box" role="alert">
+                    <div ng-show="model.user._id == model.navUserId">
+                        <b>Info! </b>
+                        You have not posted any reviews yet.
+                    </div>
+                    <div ng-hide="model.user._id == model.navUserId">
+                        <b>Info! </b>
+                        User has not posted any reviews yet.
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="review in model.reviews">
+                <div class="media">
+                    <a class="pull-left" href="">
+                        <img class="media-object media-object-restaurant thumbnail" ng-src={{review.restaurant.imageUrl}} alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="#!/details/{{review.restaurant.rid}}">
+                                {{review.restaurant.title}}
+                            </a>
+                        </h4>
+                        <small>
+                            <span>
+                                <ng-rating ng-model="review.rating"
+                                           editable="false">
+                                </ng-rating>
+                            </span>
+                        </small>
+                        <h4 class="media-heading">
+                            <small>
+                                On {{review.timestamp | date : 'mediumDate'}}
+                            </small>
+                        </h4>
+                        <p class="text-justify">
+                            {{review.description | limitTo:100}} {{review.description.length > 100 ? "..." : ""}}
+                        </p>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
         </div>
     </div>
 </div>

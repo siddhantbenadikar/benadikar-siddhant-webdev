@@ -1,5 +1,5 @@
 
 (function () {
     angular
-        .module("Palate", ["ngRoute"]);
+        .module("Palate", ["ngRoute", "ngRating"]);
 })();
