@@ -24,16 +24,16 @@
                     </h5>
                 </a>
             </li>
-            <li class="active">
-                <a data-toggle="tab">
+            <li>
+                <a class="link-red" href="#!/user/{{model.navUserId}}/followers" data-toggle="tab">
                     <h5>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         Followers ({{model.navUser.followers.length}})
                     </h5>
                 </a>
             </li>
-            <li>
-                <a class="link-red" href="#!/user/{{model.navUserId}}/following" data-toggle="tab">
+            <li class="active">
+                <a data-toggle="tab">
                     <h5>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         Following ({{model.navUser.following.length}})
@@ -61,7 +61,58 @@
 
     <div class="tab-content clearfix">
         <div class="tab-pane active">
+            <h3 class="page-header less-top-margin">Following</h3>
 
+            <div class="row" ng-hide="model.navUser.followers.length > 0">
+                <div class="alert alert-info alert-box" role="alert">
+                    <div ng-show="model.user._id == model.navUserId">
+                        <b>Info! </b>
+                        You are not following anyone yet.
+                    </div>
+                    <div ng-hide="model.user._id == model.navUserId">
+                        <b>Info! </b>
+                        User is not following anyone yet.
+                    </div>
+                </div>
+            </div>
+
+            <div ng-repeat="user in model.users">
+                <div class="media">
+                    <!--<a class="media-left" href="">-->
+                    <!--<img class="media-object media-object-movie img-circle"-->
+                    <!--src="/project/images/Photo-not-available.png"-->
+                    <!--alt=""-->
+                    <!--ng-show="!user.imgUrl">-->
+                    <!--<img class="media-object media-object-movie img-circle"-->
+                    <!--ng-src="{{user.imgUrl}}"-->
+                    <!--alt=""-->
+                    <!--ng-show="user.imgUrl">-->
+                    <!--</a>-->
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a class="link-red" href="#!/user/{{user._id}}/followers">
+                                {{user.firstName + " " + user.lastName}}
+                            </a>
+                        </h4>
+                        <div ng-hide="user.itsMe">
+                            <a href=""
+                               ng-click="model.follow($index)"
+                               ng-hide="user.alreadyFollowing"
+                               class="btn-sm btn-success">Follow
+                            </a>
+                        </div>
+                        <div ng-hide="user.itsMe">
+                            <a href=""
+                               ng-click="model.unfollow($index)"
+                               ng-show="user.alreadyFollowing"
+                               class="btn-sm btn-danger">Unfollow
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
         </div>
     </div>
 </div>

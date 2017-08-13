@@ -20,7 +20,7 @@
                     .then(function (response) {
                         user = response.data;
                         if(user === null)
-                            model.errorMessage = "User not found"
+                            model.errorMessage = "User not found";
                         else
                             UserService.setCurrentUser(user);
                             $location.url("/user/" + user._id);

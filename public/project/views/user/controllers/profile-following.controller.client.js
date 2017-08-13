@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("Palate")
-        .controller("ProfileFollowersController", profileFollowersController);
+        .controller("ProfileFollowingController", profileFollowingController);
 
-    function profileFollowersController($routeParams, UserService) {
+    function profileFollowingController($routeParams, UserService) {
         var model = this;
         model.navUserId = $routeParams.userId;
         model.follow = follow;
@@ -18,7 +18,7 @@
                     if (user) {
                         model.user = user;
                         isAlreadyFollowing();
-                        return UserService.findAllFollowers(model.navUserId);
+                        return UserService.findAllFollowingUsers(model.navUserId);
                     }
                 })
                 .then(function (response) {
