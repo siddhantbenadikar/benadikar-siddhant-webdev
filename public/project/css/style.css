@@ -38,9 +38,7 @@ input, textarea, select {
     color:white;
 }
 
-#exTab3 {
-    margin-top: 20px;
-}
+
 
 #exTab3 .tab-content {
     color : #222222;
@@ -61,4 +59,16 @@ input, textarea, select {
     font-size: 12px;
     line-height: 1.5;
     border-radius: 0;
+}
+
+#exTab3 .profile-name {
+    margin-top: 25px;
+}
+
+#exTab3 .profile-navbar {
+    margin-top: 20px;
+}
+
+#exTab3 .padding-top-seven {
+    padding-top: 7px;
 }

@@ -8,6 +8,8 @@
         model.navUserId = $routeParams.userId;
         model.follow = follow;
         model.unfollow = unfollow;
+        model.unfollowFromProfile = unfollowFromProfile;
+        model.followFromProfile = followFromProfile
 
         function init() {
             UserService.getCurrentUser()
@@ -15,6 +17,7 @@
                     var user = response.data;
                     if (user) {
                         model.user = user;
+                        isAlreadyFollowing();
                         return UserService.findAllFollowers(model.navUserId);
                     }
                 })
@@ -31,6 +34,10 @@
                     }
                 });
         }init();
+
+        function isAlreadyFollowing() {
+            model.alreadyFollowing = (model.user.following.indexOf(model.navUserId) > -1);
+        }
 
         function isFollowingFromBefore(users) {
             users.forEach(function (user, index, array) {
@@ -59,6 +66,28 @@
                     model.users[index].alreadyFollowing = false;
                 }, function (error) {
                     model.users[index].alreadyFollowing = true;
+                });
+        }
+
+        function followFromProfile() {
+            UserService
+                .follow(model.user._id, model.navUserId)
+                .then(function (response) {
+                    var status = response.data;
+                    model.alreadyFollowing = true;
+                }, function (err) {
+                    model.alreadyFollowing = false;
+                });
+        }
+
+        function unfollowFromProfile() {
+            UserService
+                .unfollow(model.user._id, model.navUserId)
+                .then(function (response) {
+                    var status = response.data;
+                    model.alreadyFollowing = false;
+                }, function (err) {
+                    model.alreadyFollowing = true;
                 });
         }
 
