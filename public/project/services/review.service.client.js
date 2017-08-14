@@ -10,14 +10,14 @@
         var api = {
             addReview: addReview,
             deleteReview: deleteReview,
-            findAllReviewsForMovieId: findAllReviewsForMovieId,
+            findAllReviewsForRestaurantId: findAllReviewsForRestaurantId,
             findAllReviewsForUserId: findAllReviewsForUserId,
             updateReview: updateReview
         };
         return api;
 
-        function addReview(userId, movieId, review) {
-            var url = "/pal/user/" + userId + "/movie/" + movieId;
+        function addReview(userId, rid, review) {
+            var url = "/pal/user/" + userId + "/restaurant/" + rid;
             return $http.post(url, review);
         }
 
@@ -26,8 +26,8 @@
             return $http.delete(url);
         }
 
-        function findAllReviewsForMovieId(movieId) {
-            var url = "/pal/movie/" + movieId + "/reviews";
+        function findAllReviewsForRestaurantId(rid) {
+            var url = "/pal/restaurant/" + rid + "/reviews";
             return $http.get(url);
         }
 

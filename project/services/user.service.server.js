@@ -1,7 +1,7 @@
 module.exports = function (app) {
 
     var userModel = require('../model/user/user.model.server');
-    // var restaurantModel = require('../model/restaurant/restaurant.model.server');
+    var restaurantModel = require('../model/restaurant/restaurant.model.server');
 
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
@@ -344,8 +344,7 @@ module.exports = function (app) {
         userModel
             .findUserById(userId)
             .then(function (user) {
-                return restaurantModel
-                    .findAllLikedRestaurants(user.restaurantLikes);
+                return restaurantModel.findAllLikedRestaurants(user.restaurantLikes);
             }, function (err) {
                 res.status(400).send(err);
             })

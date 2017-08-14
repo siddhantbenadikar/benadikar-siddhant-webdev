@@ -2,14 +2,25 @@ var q = require('q');
 const https = require('https');
 const querystring = require('querystring');
 
-
+var restaurantModel = require("../model/restaurant/restaurant.model.server");
 module.exports = function (app) {
 
     app.get("/pal/location/:location", findLocation);
-    app.get("/pal/restaurant", searchRestaurantsByLocation);
+    app.get("/pal/restaurant/search", searchRestaurantsByLocation);
     app.get("/pal/restaurant/:rid", searchRestaurantById);
-    
+    app.get("/pal/restaurant", addRestaurant);
 
+
+    function addRestaurant(req, res) {
+        var restaurant = req.body;
+        restaurantModel
+            .addRestaurant(restaurant)
+            .then(function (restaurant) {
+                res.json(restaurant);
+            }, function (err) {
+                res.sendStatus(200);
+            });
+    }
 
     function findLocation(req, res) {
         var location = req.params.location;
