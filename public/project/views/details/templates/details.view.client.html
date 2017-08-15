@@ -1,11 +1,202 @@
 
-    <div class="container-fluid">
-        <h3>Restaurant name:</h3>
-        {{model.restaurant.name}}
-        <h3>Location:</h3>
-        {{model.restaurant.location.address}}
-        <h3>Cost for two:</h3>
-        {{model.restaurant.average_cost_for_two}}
-        <h3>Rating:</h3>
-        {{model.restaurant.user_rating.aggregate_rating}}
+<div class="details container">
+    <img ng-show="model.restaurant.featured_image" class="img-responsive margin-top"
+         ng-src= {{model.restaurant.featured_image}}/>
+    <img ng-hide="model.restaurant.featured_image" class="img-responsive margin-top"
+         ng-src= "http://lorempixel.com/1200/500/food"/>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a class="link-red" href= {{model.restaurant.url}}>
+                <span class="label label-default pull-left">Check it on Zomato</span>
+            </a>
+            <h2>
+                {{model.restaurant.name}}
+                <span ng-show="model.user._id">
+                    <a ng-click="model.likeRestaurant()"
+                       ng-hide="model.isLiked">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </a>
+                    <a ng-click="model.unlikeRestaurant()"
+                       ng-show="model.isLiked">
+                        <i class="fa fa-thumbs-up green"></i>
+                    </a>
+                </span>
+                <span ng-hide="model.user._id">
+                    <a data-toggle="tooltip"
+                       data-placement="top"
+                       title="Please login to like!"
+                       role="button"
+                       data-disabled="true">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </a>
+                </span>
+            </h2>
+
+            <span class="h5" ng-show="model.avgRating != 0">
+                <b>Palate Rating:</b>
+                <ng-rating ng-model="model.avgRating"
+                           editable="false"
+                           show-grade="true">
+                </ng-rating>
+            </span>
+            <br>
+            <span class="h5">
+                <b>Zomato Rating:</b>
+                <ng-rating ng-model="model.zomatoRating"
+                           editable="false"
+                           show-grade="true">
+                </ng-rating>
+            </span>
+            <br>
+
+            <hr class="nomargin margin-top">
+        </div>
+
+        <div class="panel-body">
+            <h5><b>Address:</b> {{model.restaurant.location.address}}</h5>
+            <h5 ng-show="model.restaurant.location.city"><b>City:</b> {{model.restaurant.location.city}}</h5>
+            <h5><b>Average Cost for two:</b> {{model.restaurant.currency}}{{model.restaurant.average_cost_for_two}}</h5>
+            <h5><b>Cuisine:</b> {{model.restaurant.cuisines}}</h5>
+            <h5 ng-show="model.restaurant.phone_numbers"><b>Phone:</b>{{model.restaurant.phone_numbers}}</h5>
+        </div>
+
+        <div>
+            <hr>
+            <div class="panel-heading">
+                <h4>Reviews</h4>
+            </div>
+
+            <div ng-repeat="review in model.reviews">
+                <div class="panel-body">
+                    <div ng-if="model.selectedIndex === $index">
+                        <p>
+                            <ng-rating ng-model="model.editReview.rating"
+                                       editable="true">
+                            </ng-rating>
+                        </p>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                       placeholder="Please enter title of the review"
+                                       ng-model="model.editReview.title"/>
+                            </div>
+                            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
+                          ng-model="model.editReview.description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="media" ng-hide="model.selectedIndex === $index">
+                        <a class="pull-left" >
+                            <img class="media-object"
+                                 src="http://placehold.it/64x64"
+                                 alt=""
+                                 ng-show="!review.imgUrl">
+                            <img class="media-object limit-media-object-dimensions"
+                                 ng-src="{{review.imgUrl}}"
+                                 alt=""
+                                 ng-show="review.imgUrl">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{review.title}}
+                                <small>
+                                    <span>
+                                        <ng-rating ng-model="review.rating"
+                                                   editable="false"
+                                                   show-grade="true">
+                                        </ng-rating>
+                                    </span>
+                                </small>
+                            </h4>
+                            <h4 class="media-heading" ng-show="model.user">
+                                <small>By
+                                    <a href="#!/user/{{review._user}}/reviews">{{review.userFirstName}}</a>
+                                    on
+                                    {{review.timestamp | date : 'mediumDate'}}
+                                </small>
+                            </h4>
+                            <h4 class="media-heading" ng-show="!model.user">
+                                <small>By
+                                    <a data-toggle="tooltip"
+                                       data-placement="top"
+                                       title="Please login to view user profile!">
+                                        {{review.userFirstName}}
+                                    </a>
+                                    on
+                                    {{review.timestamp | date : 'mediumDate'}}
+                                </small>
+                            </h4>
+                            <p class="text-justify">
+                                {{review.description}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group-md pull-right">
+                        <a  class="btn btn-success" role="button"
+                           ng-if="model.selectedIndex === $index"
+                           ng-click="model.updateReview(model.editReview)">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Update
+                        </a>
+                        <a  class="btn btn-danger" role="button"
+                           ng-if="model.selectedIndex === $index"
+                           ng-click="model.cancelReview()">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            Cancel
+                        </a>
+                    </div>
+
+                    <div class="btn-group-md pull-right">
+                        <a  class="btn btn-warning" role="button"
+                           ng-if="model.selectedIndex !== $index && model.user._id == review._user"
+                           ng-click="model.selectReview($index)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            Edit
+                        </a>
+                        <a  class="btn btn-danger" role="button"
+                           ng-if="model.selectedIndex !== $index && model.user._id == review._user"
+                           ng-click="model.deleteReview($index)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            Delete
+                        </a>
+                    </div>
+                </div>
+
+                <hr class="nomargin">
+            </div>
+
+            <div class="panel-body">
+                <div class="well">
+                    <h4>Write a Review:</h4>
+                    <p>
+                        <ng-rating ng-model="model.review.rating"
+                                   editable="true">
+                        </ng-rating>
+                    </p>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Please enter title of the review"
+                                   ng-model="model.review.title"/>
+                        </div>
+                        <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
+                          ng-model="model.review.description"></textarea>
+                        </div>
+                        <a  class="btn btn-success" ng-show="model.user._id"
+                           ng-click="model.addReview(model.review)"
+                           role="button">Submit</a>
+                        <a  class="btn btn-warning" ng-show="!model.user._id"
+                           ng-disabled="!model.user._id"
+                           role="button">Please login to review!</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+</div>

@@ -5,7 +5,7 @@ var reviewSchema = mongoose.Schema({
     description: String,
     timestamp: {type: Date, default: Date.now()},
     rid: String,
-    _movie: {type: mongoose.Schema.Types.ObjectId, ref: 'PalateRestaurant'},
+    _restaurant: {type: mongoose.Schema.Types.ObjectId, ref: 'PalateRestaurant'},
     _user: {type: mongoose.Schema.Types.ObjectId, ref: 'PalateUser'},
     rating: String
 }, {collection: 'palate_review'});

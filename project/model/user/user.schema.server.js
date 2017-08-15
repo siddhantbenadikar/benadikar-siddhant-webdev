@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
     email: String,
     imgUrl: String,
     phone: String,
-    likes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Palate'}],
+    likes: [{type: mongoose.Schema.Types.ObjectId, ref: 'PalateRestaurant'}],
     restaurantLikes: [String],
     followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'PalateUser'}],
     following: [{type: mongoose.Schema.Types.ObjectId, ref: 'PalateUser'}],

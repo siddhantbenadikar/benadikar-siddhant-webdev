@@ -95,8 +95,27 @@ input, textarea, select {
     margin-bottom: 10px;
 }
 
+.details .margin-top {
+    margin-top: 15px;
+}
 
+.details .nomargin {
+    margin: 0;
+}
 
+.limit-media-object-dimensions {
+    height: 64px;
+    width: 64px;
+}
+
+a[data-disabled=true] {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .4;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 
 .clearfix:before,
 .clearfix:after {

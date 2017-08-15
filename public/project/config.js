@@ -49,7 +49,10 @@
             .when("/user/:userId/following", {
                 templateUrl: "views/user/templates/profile-following.view.client.html",
                 controller: "ProfileFollowingController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
             .when("/user/:userId/reviews", {
                 templateUrl: "views/user/templates/profile-reviews.view.client.html",
@@ -72,7 +75,7 @@
                 controller: "PocController",
                 controllerAs: "model"
             })
-            .when("/details/:rid", {
+            .when("/restaurant/details/:rid", {
                 templateUrl: "views/details/templates/details.view.client.html",
                 controller: "DetailsController",
                 controllerAs: "model"

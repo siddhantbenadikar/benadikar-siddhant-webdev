@@ -8,7 +8,7 @@ module.exports = function (app) {
     app.get("/pal/location/:location", findLocation);
     app.get("/pal/restaurant/search", searchRestaurantsByLocation);
     app.get("/pal/restaurant/:rid", searchRestaurantById);
-    app.get("/pal/restaurant", addRestaurant);
+    app.post("/pal/restaurant", addRestaurant);
     app.get("/pal/restaurant/name/:name", searchByRestaurantName);
 
     function addRestaurant(req, res) {
@@ -149,7 +149,7 @@ module.exports = function (app) {
         var defer = q.defer();
         https.get({
             host: 'developers.zomato.com',
-            path: '/api/v2.1/search?q=' + name,
+            path: '/api/v2.1/search?q=' + name + "&sort=real_distance",
             headers: {
                 "Accept": "application/json",
                 "user-key": "aab0bf5a65624e10925ce1720007a332"
