@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="container">
+    <h1 class="pitch">A one stop shop for all Foodies  </h1>
+    <div class="input-group">
+        <input type="text" class="form-control search-box"
+               id="searchByLocation"
+               ng-model="model.restaurantLocation"
+               placeholder="Search by location, e.g: Boston, MA">
+        <a ng-click="model.searchRestaurantsByLocation(model.restaurantLocation)"
+           class="link-red input-group-addon search-box btn-search">
+            <i class="glyphicon glyphicon-search"></i>
+        </a>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control search-box"
+               id="searchByName"
+               ng-model="model.restaurantTitle"
+               placeholder="Search by name, e.g: Mike's Pastry">
+        <a ng-click="model.searchRestaurantsByName(model.restaurantTitle)"
+           class="link-red input-group-addon search-box btn-search">
+            <i class="glyphicon glyphicon-search"></i>
+        </a>
+    </div>
 
-</body>
-</html>
+</div>
+
+
+
+<!--<div id="intro">-->
+    <!--<div class="item">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="input-group">-->
+                    <!--<input ng-model="searchText" placeholder="Search Image" type="text" class="form-control">-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<a ng-click="model.searchPhotos(searchText)" class="btn btn-default snb-link-black" type="button">-->
+                            <!--<span class="glyphicon glyphicon-search"></span>-->
+                        <!--</a>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div>-->
+
+
+
+<!--</div>-->
+<!--<div class="section" id="footer">-->
+    <!--<div class="container-fluid">-->
+
+        <!--<div class="row">-->
+
+            <!--<div class="col-sm-6">-->
+
+                <!--<p class="social">-->
+                    <!--<a href="https://www.facebook.com/siddhant.nandkumar" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>-->
+                    <!--<a href="https://www.linkedin.com/in/siddhant-benadikar-75ab56a1/" class="external linkedin" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-linkedin"></i></a>-->
+                    <!--<a href="https://www.instagram.com/siddhant_nandkumar/" class="external instagram" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-instagram"></i></a>-->
+                    <!--<a href="https://twitter.com/Siddhant_17" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>-->
+                    <!--<a href="mailto:siddhantn@hotmail.com" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.6 &ndash;&gt;-->
+
+            <!--<div class="col-sm-6">-->
+                <!--<p>Palate &copy; 2017 Siddhant Benadikar.-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+    <!--&lt;!&ndash; /.container &ndash;&gt;-->
+<!--</div>-->

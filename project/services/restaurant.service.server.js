@@ -9,7 +9,7 @@ module.exports = function (app) {
     app.get("/pal/restaurant/search", searchRestaurantsByLocation);
     app.get("/pal/restaurant/:rid", searchRestaurantById);
     app.get("/pal/restaurant", addRestaurant);
-
+    app.get("/pal/restaurant/name/:name", searchByRestaurantName);
 
     function addRestaurant(req, res) {
         var restaurant = req.body;
@@ -112,6 +112,44 @@ module.exports = function (app) {
         https.get({
             host: 'developers.zomato.com',
             path: '/api/v2.1/restaurant?res_id=' + rid,
+            headers: {
+                "Accept": "application/json",
+                "user-key": "aab0bf5a65624e10925ce1720007a332"
+            }
+        }, function (response) {
+            var body = '';
+            response.on('data', function (d) {
+                body += d;
+            });
+            response.on('end', function () {
+                try {
+                    body = JSON.parse(body);
+                    defer.resolve(body);
+                } catch (e) {
+                    defer.reject({error: e});
+                }
+            });
+        });
+        return defer.promise;
+    }
+
+    function searchByRestaurantName(req, res) {
+        var name = req.params.name;
+        zomatoSearchByRestaurantName(name)
+            .then(function (response) {
+                res.json(response);
+            }, function (error) {
+                res.sendStatus(500).send(error);
+            });
+    }
+
+    function zomatoSearchByRestaurantName(name) {
+        name = name.replace(new RegExp(" ", 'g'), "%20");
+        name = name.replace(new RegExp(",", 'g'), "%2C");
+        var defer = q.defer();
+        https.get({
+            host: 'developers.zomato.com',
+            path: '/api/v2.1/search?q=' + name + "&sort=real_distance",
             headers: {
                 "Accept": "application/json",
                 "user-key": "aab0bf5a65624e10925ce1720007a332"

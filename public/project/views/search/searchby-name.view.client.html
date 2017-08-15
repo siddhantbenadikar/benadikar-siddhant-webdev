@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class="pitch">A one stop shop for all Foodies  </h1>
+    <div class="input-group">
+        <input type="text" class="form-control search-box"
+               id="searchByLocation"
+               ng-model="model.restaurantLocation"
+               placeholder="Search by location, e.g: Boston, MA">
+        <a ng-click="model.searchRestaurantsByLocation(model.restaurantLocation)"
+           class="link-red input-group-addon search-box btn-search">
+            <i class="glyphicon glyphicon-search"></i>
+        </a>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control search-box"
+               id="searchByName"
+               ng-model="model.restaurantTitle"
+               placeholder="Search by name, e.g: Mike's Pastry">
+        <a ng-click="model.searchRestaurantsByName(model.restaurantTitle)"
+           class="link-red input-group-addon search-box btn-search">
+            <i class="glyphicon glyphicon-search"></i>
+        </a>
+    </div>
+
+    <hr>
+
+    <div ng-show="model.restaurants"><h3>Results for "{{name}}":</h3></div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="each in model.restaurants">
+            <a href="#!/details/{{each.restaurant.id}}">{{each.restaurant.name}}</a>
+        </li>
+    </ul>
+
+
+</div>

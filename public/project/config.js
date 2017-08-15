@@ -20,6 +20,16 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+            .when("/search/name", {
+                templateUrl: "views/search/searchby-name.view.client.html",
+                controller: "SearchByNameController",
+                controllerAs: "model"
+            })
+            .when("/search/location", {
+                templateUrl: "views/search/searchby-location.view.client.html",
+                controller: "SearchByLocationController",
+                controllerAs: "model"
+            })
             .when("/user/:userId", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
@@ -31,7 +41,10 @@
             .when("/user/:userId/followers", {
                 templateUrl: "views/user/templates/profile-followers.view.client.html",
                 controller: "ProfileFollowersController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
             .when("/user/:userId/following", {
                 templateUrl: "views/user/templates/profile-following.view.client.html",
@@ -41,12 +54,18 @@
             .when("/user/:userId/reviews", {
                 templateUrl: "views/user/templates/profile-reviews.view.client.html",
                 controller: "ProfileReviewsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
             .when("/user/:userId/likes", {
                 templateUrl: "views/user/templates/profile-likes.view.client.html",
                 controller: "ProfileLikesController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    checkLoggedIn: checkLoggedIn
+                }
             })
             .when("/poc", {
                 templateUrl: "views/poc/templates/poc.view.client.html",

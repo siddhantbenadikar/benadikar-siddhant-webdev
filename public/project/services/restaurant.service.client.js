@@ -6,6 +6,7 @@
     function restaurantService($http) {
         this.addRestaurant = addRestaurant;
         this.findLocation = findLocation;
+        this.findByRestaurantName = findByRestaurantName;
         this.searchRestaurantsByLocation = searchRestaurantsByLocation;
         this.searchRestaurantById = searchRestaurantById;
         
@@ -23,6 +24,10 @@
 
         function searchRestaurantById(rid) {
             return $http.get("/pal/restaurant/" + rid);
+        }
+
+        function findByRestaurantName(restaurantName) {
+            return $http.get("/pal/restaurant/name/" + restaurantName)
         }
     }
 })();
