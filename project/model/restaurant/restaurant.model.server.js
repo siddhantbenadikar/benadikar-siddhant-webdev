@@ -16,8 +16,11 @@ module.exports = restaurantModel;
 
 function addRestaurant(restaurant) {
     var defer = q.defer();
-    restaurant.rid = restaurant.id.toString();
-    restaurantModel.create(restaurant, function (err, restaurant){
+    var newRestaurant = {};
+    newRestaurant.rid = restaurant.id;
+    newRestaurant.title = restaurant.name;
+    newRestaurant.location = restaurant.location.address;
+    restaurantModel.create(newRestaurant, function (err, restaurant){
         if(err){
             defer.reject(err);
         }

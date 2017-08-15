@@ -19,7 +19,7 @@
 
         function searchRestaurantsByLocation(location) {
             $rootScope.location = location;
-            $location.url("/search/name");
+            $location.url("/search/location");
         }
 
         function searchRestaurantsByName(name) {

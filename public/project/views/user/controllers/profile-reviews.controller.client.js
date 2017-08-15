@@ -16,6 +16,7 @@
                     var user = response.data;
                     if (user) {
                         model.user = user;
+                        isAlreadyFollowing();
                         return ReviewService.findAllReviewsForUserId(model.navUserId);
                     }
                 })
@@ -34,9 +35,11 @@
                             });
                     }
                 });
-        }
+        }init();
 
-        init();
+        function isAlreadyFollowing() {
+            model.alreadyFollowing = (model.user.following.indexOf(model.navUserId) > -1);
+        }
 
     }
 

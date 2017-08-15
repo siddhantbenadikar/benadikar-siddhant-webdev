@@ -20,15 +20,34 @@
             <i class="glyphicon glyphicon-search"></i>
         </a>
     </div>
-
-    <hr>
-
-    <div ng-show="model.restaurants"><h3>Results for "{{location}}":</h3></div>
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="each in model.restaurants">
-            <a href="#!/restaurant/details/{{each.restaurant.id}}">{{each.restaurant.name}}</a>
-        </li>
-    </ul>
+    <div class="margin-top">
+        <hr>
+        <div ng-show="model.restaurants"><h3>Results for "{{location}}":</h3></div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="each in model.restaurants">
+                <div class="row">
+                    <div class="col-md-2 visible-md visible-lg">
+                        <img ng-show="model.restaurant.thumb" class="thumbnail image-responsive image-newsize"
+                             ng-src= {{model.restaurant.thumb}}/>
+                        <img ng-hide="model.restaurant.thumb" class="thumbnail image-responsive image-newsize"
+                             ng-src= "http://lorempixel.com/1200/500/food"/>
+                    </div>
+                    <div class="col-md-8 col-xs-9">
+                        <h5 class="faded-font">{{each.restaurant.cuisines}}</h5>
+                        <h4><b></b><a class="link-red" href="#!/restaurant/details/{{each.restaurant.id}}">{{each.restaurant.name}}</a></b></h4>
+                        <h5><b>{{each.restaurant.location.locality}}</b></h5>
+                        <h5 class="faded-font">{{each.restaurant.location.address}}</h5>
+                        <h5 class="faded-font">AVERAGE COST FOR TWO: {{each.restaurant.currency}}{{each.restaurant.average_cost_for_two}}</h5>
+                    </div>
+                    <div class="col-md-2 col-xs-3">
+                        <div class="rating-bar">
+                            {{each.restaurant.user_rating.aggregate_rating}}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
 
 </div>

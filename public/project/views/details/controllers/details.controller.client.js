@@ -84,7 +84,7 @@
         }
 
         function addReview(review) {
-            model.restaurant.imageUrl = model.imageUrl;
+            // model.restaurant.imageUrl = model.imageUrl;
             ReviewService
                 .addReview(model.user._id, model.rid, review)
                 .then(function (response) {
@@ -167,7 +167,7 @@
         }
 
         function likeRestaurant() {
-            model.restaurant.imageUrl = model.imageUrl;
+            // model.restaurant.imageUrl = model.imageUrl;
             UserService
                 .like(model.user._id, model.rid)
                 .then(function (response) {

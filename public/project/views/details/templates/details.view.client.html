@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <a class="link-red" href= {{model.restaurant.url}}>
-                <span class="label label-default pull-left">Check it on Zomato</span>
+                <span class="label label-default pull-left">Check it out on Zomato</span>
             </a>
             <h2>
                 {{model.restaurant.name}}
@@ -59,6 +59,7 @@
             <h5><b>Average Cost for two:</b> {{model.restaurant.currency}}{{model.restaurant.average_cost_for_two}}</h5>
             <h5><b>Cuisine:</b> {{model.restaurant.cuisines}}</h5>
             <h5 ng-show="model.restaurant.phone_numbers"><b>Phone:</b>{{model.restaurant.phone_numbers}}</h5>
+            <a href={{model.restaurant.menu_url}} class="link-red">Click here to check out the menu!!</a>
         </div>
 
         <div>

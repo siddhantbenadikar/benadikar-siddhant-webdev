@@ -20,6 +20,7 @@
                     var user = response.data;
                     if (user) {
                         model.user = user;
+                        isAlreadyFollowing();
                         return UserService.findAllLikedRestaurants(model.navUserId);
                     }
                 })
@@ -49,6 +50,10 @@
 
             model.restaurants = restaurants;
 
+        }
+
+        function isAlreadyFollowing() {
+            model.alreadyFollowing = (model.user.following.indexOf(model.navUserId) > -1);
         }
 
         function like(index) {
