@@ -149,7 +149,7 @@ module.exports = function (app) {
         var defer = q.defer();
         https.get({
             host: 'developers.zomato.com',
-            path: '/api/v2.1/search?q=' + name + "&sort=real_distance",
+            path: '/api/v2.1/search?q=' + name,
             headers: {
                 "Accept": "application/json",
                 "user-key": "aab0bf5a65624e10925ce1720007a332"
