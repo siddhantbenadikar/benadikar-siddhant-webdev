@@ -88,11 +88,11 @@
             <div ng-repeat="review in model.reviews">
                 <div class="media">
                     <a class="pull-left" href="">
-                        <img class="media-object media-object-restaurant thumbnail" ng-src={{review.restaurant.imageUrl}} alt="">
+                        <img class="media-object media-object-restaurant thumbnail" ng-src="http://lorempixel.com/1200/500/food" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="#!/restaurant/details/{{review.restaurant.rid}}">
+                            <a class="link-red" href="#!/restaurant/details/{{review.restaurant.rid}}">
                                 {{review.restaurant.title}}
                             </a>
                         </h4>
