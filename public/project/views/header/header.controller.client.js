@@ -13,10 +13,7 @@
 
         function init() {
 
-        }
-
-        init();
-
+        }init();
 
         function logout() {
             UserService.logout()
