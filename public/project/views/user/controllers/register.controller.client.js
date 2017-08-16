@@ -12,7 +12,7 @@
         }init();
 
         function registerUser(user) {
-            if (validate(user) === undefined) {
+            if (validate(user)) {
                 UserService
                     .register(user)
                     .then(function (response) {
@@ -39,7 +39,7 @@
                 f = f && user.password;
                 f = f && user.firstName;
                 f = f && user.lastName;
-                f = f && user.email;
+                f = f && user.verifyPassword;
                 if (user.password === user.verifyPassword)
                     f = f && true;
                 else
