@@ -8,7 +8,10 @@
             .when("/", {
                 templateUrl: "views/home/home.view.client.html",
                 controller: "HomeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -23,12 +26,18 @@
             .when("/search/name", {
                 templateUrl: "views/search/searchby-name.view.client.html",
                 controller: "SearchByNameController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/search/location", {
                 templateUrl: "views/search/searchby-location.view.client.html",
                 controller: "SearchByLocationController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/user/:userId", {
                 templateUrl: "views/user/templates/profile.view.client.html",
@@ -78,12 +87,18 @@
             .when("/restaurant/details/:rid", {
                 templateUrl: "views/details/templates/details.view.client.html",
                 controller: "DetailsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             })
             .when("/search/users", {
                 templateUrl: "views/user/templates/search-users.view.client.html",
                 controller: "SearchUsersController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
             });
     }
 
@@ -102,6 +117,18 @@
                 }
             });
         return defer.promise;
+    }
+
+    function getLoggedIn(UserService, $q) {
+        var deferred = $q.defer();
+        UserService
+            .getCurrentUser()
+            .then(function (response) {
+                var user = response.data;
+                UserService.setCurrentUser(user);
+                deferred.resolve();
+            });
+        return deferred.promise;
     }
 
 })();
