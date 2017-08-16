@@ -8,7 +8,6 @@
 
         var model = this;
 
-        model.toggleMenu = toggleMenu;
         model.logout = logout;
         model.home = home;
 
@@ -18,9 +17,6 @@
 
         init();
 
-        function toggleMenu() {
-            $("#wrapper").toggleClass("toggled");
-        }
 
         function logout() {
             UserService.logout()
