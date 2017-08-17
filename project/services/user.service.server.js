@@ -6,11 +6,20 @@ module.exports = function (app) {
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+    var FacebookStrategy = require('passport-facebook').Strategy;
     var googleConfig = {
         clientID     : process.env.GOOGLE_CLIENT_ID,
         clientSecret : process.env.GOOGLE_CLIENT_SECRET,
         callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
+
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -35,7 +44,7 @@ module.exports = function (app) {
         }));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/project/#!/profile/null',
+            successRedirect: '/project/#!/user/null',
             failureRedirect: '/project/#!/login'
         }));
 
@@ -92,6 +101,39 @@ module.exports = function (app) {
                     if (err) { return done(err); }
                 }
             );
+    }
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        console.log("Inside security facebook strategy!!");
+        userModel
+            .findUserByFacebookId(profile.id)
+            .then(function (user) {
+                if (user) {
+                    return done(null, user);
+                } else {
+                    var names = profile.displayName.split(" ");
+                    var newUser = {
+                        username: profile.displayName.replace(/ /g, ""),
+                        firstName: names[0],
+                        lastName: names[1],
+                        facebook: {
+                            token: token,
+                            id: profile.id
+                        }
+                    };
+                    userModel
+                        .createUser(newUser)
+                        .then(function (user) {
+                            return done(null, user);
+                        }, function (err) {
+                            console.log(err);
+                            return done(err, null);
+                        });
+                }
+            }, function (err) {
+                console.log(err);
+                return done(err, null);
+            });
     }
 
     function googleStrategy(token, refreshToken, profile, done) {

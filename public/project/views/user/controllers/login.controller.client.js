@@ -6,7 +6,7 @@
         function loginController($location, UserService) {
             var model = this;
             model.login = login;
-            model.user = {};
+            // model.user = {};
 
             function init() {
 
