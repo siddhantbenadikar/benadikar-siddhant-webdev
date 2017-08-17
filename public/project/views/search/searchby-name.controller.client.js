@@ -3,28 +3,26 @@
         .module("Palate")
         .controller("SearchByNameController", searchByNameController);
 
-    function searchByNameController(RestaurantService, $rootScope, $route, $location) {
+    function searchByNameController(RestaurantService, $routeParams, $location) {
         var model = this;
-        model.restaurantTitle = $rootScope.name;
+        model.restaurantTitle = $routeParams.name;
 
         model.searchRestaurantsByLocation = searchRestaurantsByLocation;
         model.searchRestaurantsByName = searchRestaurantsByName;
 
         function init() {
-            RestaurantService.findByRestaurantName($rootScope.name)
+            RestaurantService.findByRestaurantName(model.restaurantTitle)
                 .then(function (response) {
                     model.restaurants = response.data.restaurants;
                 });
         }init();
 
         function searchRestaurantsByLocation(location) {
-            $rootScope.location = location;
-            $location.url("/search/location");
+            $location.url("/search/location/" + location);
         }
 
         function searchRestaurantsByName(name) {
-            $rootScope.name = name;
-            $route.reload();
+            $location.url("/search/name/" + name);
         }
 
     }

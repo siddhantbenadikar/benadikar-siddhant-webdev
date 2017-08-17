@@ -3,15 +3,15 @@
         .module("Palate")
         .controller("SearchByLocationController", searchByLocationController);
 
-    function searchByLocationController(RestaurantService, $rootScope, $route, $location) {
+    function searchByLocationController(RestaurantService, $routeParams, $location) {
         var model = this;
-        model.restaurantLocation = $rootScope.location;
+        model.restaurantLocation = $routeParams.locationName;
 
         model.searchRestaurantsByLocation = searchRestaurantsByLocation;
         model.searchRestaurantsByName = searchRestaurantsByName;
 
         function init() {
-            RestaurantService.findLocation($rootScope.location)
+            RestaurantService.findLocation(model.restaurantLocation)
                 .then(function (response) {
                     var locationSuggestions = response.data.location_suggestions;
                     var entityType = locationSuggestions[0].entity_type;
@@ -25,13 +25,11 @@
         }init();
 
         function searchRestaurantsByLocation(location) {
-            $rootScope.location = location;
-            $route.reload();
+            $location.url("/search/location/" + location);
         }
 
         function searchRestaurantsByName(name) {
-            $rootScope.name = name;
-            $location.url("/search/name");
+            $location.url("/search/name/" + name);
         }
 
     }

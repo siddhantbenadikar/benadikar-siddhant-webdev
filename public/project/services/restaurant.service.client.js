@@ -9,13 +9,13 @@
         this.findByRestaurantName = findByRestaurantName;
         this.searchRestaurantsByLocation = searchRestaurantsByLocation;
         this.searchRestaurantById = searchRestaurantById;
-        this.findLocationByLatLng = findLocationByLatLng;
+        this.searchRestaurantByLatLng = searchRestaurantByLatLng;
         
         function addRestaurant(restaurant) {
             return $http.post('/pal/restaurant', restaurant);
         }
 
-        function findLocationByLatLng(lat, lng) {
+        function searchRestaurantByLatLng(lat, lng) {
             return $http.get("/pal/location?lat=" + lat + "&lng=" + lng);
         }
 

@@ -23,7 +23,7 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/search/name", {
+            .when("/search/name/:name", {
                 templateUrl: "views/search/searchby-name.view.client.html",
                 controller: "SearchByNameController",
                 controllerAs: "model",
@@ -31,7 +31,7 @@
                     getLoggedIn: getLoggedIn
                 }
             })
-            .when("/search/location", {
+            .when("/search/location/:locationName", {
                 templateUrl: "views/search/searchby-location.view.client.html",
                 controller: "SearchByLocationController",
                 controllerAs: "model",
