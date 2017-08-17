@@ -84,6 +84,7 @@ input, textarea, select {
 
 .thumbnail{
     border-color: #E52B50;
+    height: 75px;
 }
 
 .pitch{
@@ -182,6 +183,21 @@ a[data-disabled=true] {
 
 .page-header, .sub-header {
     color: #E52B50;
+}
+
+@media (max-width: 767px) {
+    .pitch {
+        font-size: 24px;
+    }
+
+    .navbar-nav a {
+        margin-right: 10px;
+        font-size: 12px;
+    }
+
+    .h3, h3 {
+        font-size: 21px;
+    }
 }
 
 
