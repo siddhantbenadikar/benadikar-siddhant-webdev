@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="username">Username</label>
             <input name="username"
-                   ng-model="user.username"
+                   ng-model="user1.username"
                    class="form-control"
                    placeholder="* Required"
                    id="username" />
@@ -16,7 +16,7 @@
             <label for="password">Password</label>
             <input name="password"
                    class="form-control"
-                   ng-model="user.password"
+                   ng-model="user1.password"
                    placeholder="* Required"
                    type="password"
                    id="password" />
@@ -24,27 +24,27 @@
             <label for="verifyPassword">Verify Password</label>
             <input name="verifyPassword"
                    class="form-control"
-                   ng-model="user.verifyPassword"
+                   ng-model="user1.verifyPassword"
                    placeholder="* Required"
                    type="password"
                    id="verifyPassword" />
 
             <label for="firstName">First Name</label>
             <input name="firstName"
-                   ng-model="user.firstName"
+                   ng-model="user1.firstName"
                    class="form-control"
                    placeholder="* Required"
                    id="firstName" />
 
             <label for="lastName">Last Name</label>
             <input name="lastName"
-                   ng-model="user.lastName"
+                   ng-model="user1.lastName"
                    class="form-control"
                    placeholder="* Required"
                    id="lastName" />
 
             <a class="btn btn-default btn-block btn-primary"
-               ng-click="model.registerUser(user)"
+               ng-click="model.registerUser(user1)"
                role="button">Register</a>
 
             <a class="btn btn-default btn-block btn-danger"

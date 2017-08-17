@@ -99,6 +99,14 @@
                 resolve: {
                     getLoggedIn: getLoggedIn
                 }
+            })
+            .when("/admin", {
+                templateUrl: "views/admin/admin.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve: {
+                    checkAdmin: checkAdmin
+                }
             });
     }
 
@@ -129,6 +137,28 @@
                 deferred.resolve();
             });
         return deferred.promise;
+    }
+
+    function checkAdmin(UserService, $q, $location) {
+        var defer = $q.defer();
+        UserService.getCurrentUser()
+            .then(function (response) {
+                var user = response.data;
+                if(user) {
+                    if(user !== null && user.role === 'admin') {
+                        UserService.setCurrentUser(user);
+                        defer.resolve(user);
+                    }
+                    else {
+                        defer.reject();
+                        $location.url("/");
+                    }
+                } else {
+                    defer.reject();
+                    $location.url("/");
+                }
+            });
+        return defer.promise;
     }
 
 })();

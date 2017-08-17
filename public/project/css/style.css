@@ -160,3 +160,28 @@ a[data-disabled=true] {
     top: 50%;
     z-index: 1;
 }
+
+.theadrow {
+    background-color: #cccccc;
+    color: #E52B50;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.pencilicon {
+    font-size: 16px;
+    color:  cornflowerblue;
+}
+
+.removeicon {
+    font-size: 16px;
+    color: red;
+}
+
+.page-header, .sub-header {
+    color: #E52B50;
+}
+
+
