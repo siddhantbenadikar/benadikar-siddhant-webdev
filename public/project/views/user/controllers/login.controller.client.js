@@ -13,14 +13,15 @@
             } init();
 
             function login(user) {
-                if(!user) {
+                if(user === undefined || user.username === undefined || user.password === undefined) {
                     model.errorMessage = "Please enter username and password";
                     return;
                 }
-                UserService.findUserByCredentials(user)
+                UserService.login(user)
                     .then(function (response) {
                         user = response.data;
-                        if(user === null)
+                        var status = response.status;
+                        if(status === 400)
                             model.errorMessage = "User not found";
                         else
                             UserService.setCurrentUser(user);

@@ -19,7 +19,7 @@
 
             findUserByUsername: findUserByUsername,
             getAllUsers: getAllUsers,
-            findUserByCredentials: login,
+            login: login,
             deleteUser: deleteUser,
             findAllFollowingUsers: findAllFollowingUsers,
             findAllFollowers: findAllFollowers,
