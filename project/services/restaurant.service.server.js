@@ -187,7 +187,7 @@ module.exports = function (app) {
         var defer = q.defer();
         https.get({
             host: 'developers.zomato.com',
-            path: '/api/v2.1/search?entity_id=289&entity_type=city&q=' + name + "&sort=rating",
+            path: '/api/v2.1/search?entity_id=289&entity_type=city&q=' + name,
             headers: {
                 "Accept": "application/json",
                 "user-key": "aab0bf5a65624e10925ce1720007a332"
