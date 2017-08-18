@@ -21,7 +21,7 @@
                     .then(function (response) {
                         user = response.data;
                         var status = response.status;
-                        if(status === 400)
+                        if(status === 401)
                             model.errorMessage = "User not found";
                         else
                             UserService.setCurrentUser(user);
