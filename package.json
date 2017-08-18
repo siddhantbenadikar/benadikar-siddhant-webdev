@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "angular-route": "^1.6.5",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",

@@ -10,6 +10,8 @@
         var model = this;
         model.rid = $routeParams.rid;
 
+        var GEO_API_KEY = "AIzaSyDmjkyUIuqFhtjJHInVo848M68jhB4fWxA";
+
         model.addReview = addReview;
         model.selectReview = selectReview;
         model.updateReview = updateReview;
@@ -27,7 +29,6 @@
                 "title": "",
                 "description": ""
             };
-
 
             UserService
                 .getCurrentUser()
@@ -49,6 +50,9 @@
                 .then(function (response) {
                     model.restaurant = response.data;
                     model.zomatoRating = model.restaurant.user_rating.aggregate_rating;
+                    var lat = response.data.location.latitude;
+                    var lng = response.data.location.longitude;
+                    model.mapUrl = "https://maps.googleapis.com/maps/api/staticmap?center="+lat+","+lng+"&zoom=15&size=2000x300&maptype=roadmap&markers=color:red|"+lat+","+lng+"&key=" + GEO_API_KEY;
                 });
 
             findAllReviewsForRestaurantId();
