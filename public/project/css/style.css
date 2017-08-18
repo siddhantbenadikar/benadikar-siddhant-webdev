@@ -198,6 +198,10 @@ a[data-disabled=true] {
     .h3, h3 {
         font-size: 21px;
     }
+
+    h1, h2 {
+        font-size: 25px;
+    }
 }
 
 .center-div {
