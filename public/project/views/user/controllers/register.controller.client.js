@@ -42,8 +42,10 @@
                 f = f && user.verifyPassword;
                 if (user.password === user.verifyPassword)
                     f = f && true;
-                else
+                else {
                     f = f && false;
+                    model.error = "Passwords do not match"
+                }
             }
             else {
                 f = false;
